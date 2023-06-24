@@ -5,6 +5,8 @@ import com.example.backend.login.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by Binh
  * Date : 6/23/2023 - 12:12 AM
@@ -20,6 +22,10 @@ public class UserServiceimpl implements UserService {
         return userRepository.save(user);
     }
 
+    @Override
+    public List<User> getalluser() {
+        return userRepository.findAll();
+    }
 
 
 }
