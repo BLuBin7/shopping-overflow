@@ -3,10 +3,9 @@ package com.example.backend.login.controller;
 import com.example.backend.login.model.User;
 import com.example.backend.login.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * Created by Binh
@@ -14,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
  * Description :
  */
 @RestController
-@RequestMapping("/login")
+@RequestMapping("/user")
 public class UserController {
     @Autowired
     private UserService userService;
@@ -22,5 +21,10 @@ public class UserController {
     public String add(@RequestBody User user){
         userService.saveUser(user);
         return "New user is added";
+    }
+
+    @GetMapping("/getall")
+    public List<User> getAll(){
+        return userService.getalluser();
     }
 }
