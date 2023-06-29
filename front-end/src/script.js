@@ -142,7 +142,7 @@ document.addEventListener('click', (e) => {
     }
 })
 
-// hiển thị modal
+// hiển thị model
 window.onload = function(){
     document.querySelector('.site').classList.toggle('showmodal');
 }
