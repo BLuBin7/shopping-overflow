@@ -97,7 +97,7 @@ var productThumb = new Swiper ('.small-image' , {
     }
 });
 
-// ảnh lớn
+// // ảnh lớn
 var productBig = new Swiper ('.big-image' , {
     loop: true,
     autoHeight: true,
