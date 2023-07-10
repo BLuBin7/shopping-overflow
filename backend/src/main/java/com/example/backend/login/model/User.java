@@ -1,9 +1,6 @@
 package com.example.backend.login.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 /**
  * Created by Binh
@@ -11,11 +8,15 @@ import jakarta.persistence.Id;
  * Description :
  */
 @Entity
+@Table(name = "user")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "_id")
     private int _id;
+    @Column(name = "_username")
     private String _username;
+    @Column(name = "_password")
     private String _password;
 
     public User() {}
