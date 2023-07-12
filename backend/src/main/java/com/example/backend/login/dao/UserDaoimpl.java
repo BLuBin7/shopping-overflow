@@ -48,6 +48,13 @@ public class UserDaoimpl implements UserDAO {
     }
 
     @Override
+    public void deleteByID(int id) {
+        User user = entityManager.find(User.class,id);
+
+        entityManager.remove(user);
+    }
+
+    @Override
     public List<User> findByUserName(String username) {
         TypedQuery<User> query = entityManager.createQuery("FROM User where _username =:value",User.class).setParameter("value",username);
         return query.getResultList();
