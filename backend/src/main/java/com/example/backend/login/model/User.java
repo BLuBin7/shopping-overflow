@@ -21,6 +21,11 @@ public class User {
 
     public User() {}
 
+    public User(String _username, String _password) {
+        this._username = _username;
+        this._password = _password;
+    }
+
     public int get_id() {
         return _id;
     }
