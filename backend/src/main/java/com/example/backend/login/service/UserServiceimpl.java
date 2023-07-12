@@ -1,7 +1,7 @@
 package com.example.backend.login.service;
 
+import com.example.backend.login.dao.UserDAO;
 import com.example.backend.login.model.User;
-import com.example.backend.login.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,17 +15,41 @@ import java.util.List;
 @Service
 public class UserServiceimpl implements UserService {
     @Autowired
-    private UserRepository userRepository;
+    private UserDAO userDAO;
 
-    @Override
-    public User saveUser(User user) {
-        return userRepository.save(user);
+    @Autowired
+    public UserServiceimpl(UserDAO userDAO) {
+        this.userDAO = userDAO;
     }
 
     @Override
-    public List<User> getalluser() {
-        return userRepository.findAll();
+    public List<User> findAll() {
+        return userDAO.findAll();
     }
 
 
+    @Override
+    public void save(User user) {
+        userDAO.save(user);
+    }
+
+    @Override
+    public User findbyId(Integer id) {
+        return null;
+    }
+
+    @Override
+    public List<User> findByUserName(String thelastname) {
+        return null;
+    }
+
+    @Override
+    public void Update(User user, String value) {
+
+    }
+
+    @Override
+    public void deleteByID(int id) {
+        userDAO.deleteByID(id);
+    }
 }

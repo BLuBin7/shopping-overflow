@@ -11,6 +11,10 @@ import java.util.List;
  * Description :
  */
 public interface UserService {
-    public User saveUser(User user);
-    public List<User> getalluser();
+    void save(User user);
+    User findbyId(Integer id);
+    List<User> findAll();
+    List<User> findByUserName(String thelastname);
+    void Update(User user,String value);
+    void deleteByID(int id);
 }
