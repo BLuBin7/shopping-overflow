@@ -3,7 +3,6 @@ package com.example.backend.login.restAPI;
 import com.example.backend.login.Exception.UserErrorResponse;
 import com.example.backend.login.Exception.UserNotFoundException;
 import com.example.backend.login.model.User;
-import com.example.backend.login.service.UserService;
 import jakarta.annotation.PostConstruct;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,13 +19,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 public class UserRestController {
-    private UserService userService;
-
     private List<User> users;
-
-    public UserRestController(UserService userService) {
-        this.userService = userService;
-    }
 
     @PostConstruct
     private void loadData(){
@@ -35,10 +28,9 @@ public class UserRestController {
         // test api
         users.add(new User("blubin","123"));
     }
-
     @GetMapping("/users")
     public List<User> getallUser(){
-        return userService.findAll();
+        return users;
     }
 
     @GetMapping("/users/{userId}")
