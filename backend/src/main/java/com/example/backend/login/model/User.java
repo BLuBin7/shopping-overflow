@@ -12,11 +12,11 @@ import jakarta.persistence.*;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "_id")
+    @Column(name = "id")
     private int _id;
-    @Column(name = "_username")
+    @Column(name = "user_name")
     private String _username;
-    @Column(name = "_password")
+    @Column(name = "pass_word")
     private String _password;
 
     public User() {}
