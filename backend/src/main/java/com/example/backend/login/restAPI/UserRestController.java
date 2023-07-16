@@ -16,51 +16,51 @@ import java.util.List;
  * Date : 7/12/2023 - 10:26 PM
  * Description :
  */
-@RestController
-@RequestMapping("/api")
-public class UserRestController {
-    private List<User> users;
-
-    @PostConstruct
-    private void loadData(){
-        users = new ArrayList<>();
-
-        // test api
-        users.add(new User("blubin","123"));
-    }
-    @GetMapping("/users")
-    public List<User> getallUser(){
-        return users;
-    }
-
-    @GetMapping("/users/{userId}")
-    public User getUser(@PathVariable int userId){
-        if(userId>= users.size() || userId < 0){
-            throw new UserNotFoundException("User is not found -"+ userId);
-        }
-        return users.get(userId);
-
-    }
-    // Exception 404-NOT FOUND
-    @ExceptionHandler
-    public ResponseEntity<UserErrorResponse> HandleException(UserNotFoundException exc){
-        UserErrorResponse error = new UserErrorResponse();
-
-        error.setStatus(HttpStatus.NOT_FOUND.value());
-        error.setMessage(exc.getMessage());
-        error.setTimeStamp(System.currentTimeMillis());
-
-        return new ResponseEntity<>(error,HttpStatus.NOT_FOUND);
-    }
-    // Exception 400 - BAD REQUEST
-    @ExceptionHandler
-    public ResponseEntity<UserErrorResponse> handleException(Exception ex){
-        UserErrorResponse error = new UserErrorResponse();
-
-        error.setStatus(HttpStatus.BAD_REQUEST.value());
-        error.setMessage(ex.getMessage());
-        error.setTimeStamp(System.currentTimeMillis());
-
-        return new ResponseEntity<>(error,HttpStatus.BAD_REQUEST);
-    }
-}
+//@RestController
+//@RequestMapping("/api")
+//public class UserRestController {
+//    private List<User> users;
+//
+//    @PostConstruct
+//    private void loadData(){
+//        users = new ArrayList<>();
+//
+//        // test api
+//        users.add(new User("blubin","123"));
+//    }
+//    @GetMapping("/users")
+//    public List<User> getallUser(){
+//        return users;
+//    }
+//
+//    @GetMapping("/users/{userId}")
+//    public User getUser(@PathVariable int userId){
+//        if(userId>= users.size() || userId < 0){
+//            throw new UserNotFoundException("User is not found -"+ userId);
+//        }
+//        return users.get(userId);
+//
+//    }
+//    // Exception 404-NOT FOUND
+//    @ExceptionHandler
+//    public ResponseEntity<UserErrorResponse> HandleException(UserNotFoundException exc){
+//        UserErrorResponse error = new UserErrorResponse();
+//
+//        error.setStatus(HttpStatus.NOT_FOUND.value());
+//        error.setMessage(exc.getMessage());
+//        error.setTimeStamp(System.currentTimeMillis());
+//
+//        return new ResponseEntity<>(error,HttpStatus.NOT_FOUND);
+//    }
+//    // Exception 400 - BAD REQUEST
+//    @ExceptionHandler
+//    public ResponseEntity<UserErrorResponse> handleException(Exception ex){
+//        UserErrorResponse error = new UserErrorResponse();
+//
+//        error.setStatus(HttpStatus.BAD_REQUEST.value());
+//        error.setMessage(ex.getMessage());
+//        error.setTimeStamp(System.currentTimeMillis());
+//
+//        return new ResponseEntity<>(error,HttpStatus.BAD_REQUEST);
+//    }
+//}
