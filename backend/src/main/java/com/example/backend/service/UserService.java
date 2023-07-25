@@ -1,6 +1,6 @@
-package com.example.backend.login.service;
+package com.example.backend.service;
 
-import com.example.backend.login.model.User;
+import com.example.backend.model.User;
 
 import java.util.List;
 
@@ -12,9 +12,9 @@ import java.util.List;
 public interface UserService {
     List<User> findAll();
 
-    User findById(int theId);
+    User findById(Long theId);
 
     User save(User theUser);
 
-    void deleteById(int theId);
+    void deleteById(Long theId);
 }

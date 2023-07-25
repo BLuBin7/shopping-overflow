@@ -1,4 +1,4 @@
-package com.example.backend.login.Exception;
+package com.example.backend.Exception;
 
 /**
  * Created by Binh

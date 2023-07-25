@@ -1,6 +1,4 @@
-package com.example.backend.login.Exception;
-
-import com.example.backend.login.model.User;
+package com.example.backend.Exception;
 
 /**
  * Created by Binh

@@ -1,21 +1,10 @@
-package com.example.backend.login.restAPI;
-
-import com.example.backend.login.Exception.UserErrorResponse;
-import com.example.backend.login.Exception.UserNotFoundException;
-import com.example.backend.login.model.User;
-import jakarta.annotation.PostConstruct;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
-import java.util.List;
-
-/**
- * Created by Binh
- * Date : 7/12/2023 - 10:26 PM
- * Description :
- */
+//package com.example.backend.controller;
+//
+///**
+// * Created by Binh
+// * Date : 7/12/2023 - 10:26 PM
+// * Description :
+// */
 //@RestController
 //@RequestMapping("/api")
 //public class UserRestController {
