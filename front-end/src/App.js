@@ -8,6 +8,8 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Appbar from './component/Appbar'
 import User from './component/User'
+import Header from "./component/Header";
+
 // function App() {
 //   return (
 //     <>
@@ -31,7 +33,7 @@ import User from './component/User'
 function App() {
   return (
     <div className="App">
-    <Appbar/>
+    <Header />
     <User/>
    
     </div>
