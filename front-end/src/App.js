@@ -1,44 +1,19 @@
-import "./App.css";
-import logo from "./logo.svg";
-// add modules bootstrap
-import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import Navbar from "./layout/Navbar";
-import Home from "./pages/Home";
-// test
-import Login from "./pages/Login";
-import Appbar from './component/Appbar'
-import User from './component/User'
-import Header from "./component/Header";
-
-// function App() {
-//   return (
-//     <>
-//       <div className="App">
-        
-//         <header className="App-header">
-//           <img src={logo} className="App-logo" alt="logo" />
-//           <p>Login</p>
-//         </header>
-//         {/* test */}
-//         <Login />
-
-//         <Navbar />
-//         <Home />
-  
-//       </div>
-//     </>
-//   );
-// }
-
+import logo from './logo.svg';
+// import './App.css';
+import Header from './components/Header';
+import Login from './components/Signup';
+import Home from './components/Home';
+import { Outlet,Route,Routes } from 'react-router-dom';
 function App() {
   return (
-    <div className="App">
-    <Header />
-    <User/>
-   
-    </div>
+    <>
+      <Header />
+      <Home/>
+      <Outlet/>
+
+      
+    </>
   );
 }
-
 
 export default App;
