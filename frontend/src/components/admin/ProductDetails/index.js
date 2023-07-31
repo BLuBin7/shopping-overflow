@@ -4,6 +4,8 @@ import { NavLink, useParams } from "react-router-dom";
 import axios from "axios";
 
 const ProductDetails = () => {
+  const apiUrl = process.env.REACT_APP_API_URL;
+
   const { productId } = useParams();
   const [product, setProduct] = useState(null);
 
@@ -15,7 +17,7 @@ const ProductDetails = () => {
   const fetchProductDetails = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:8080/getProductDetailsById/${productId}`
+        `${apiUrl}/getProductDetailsById/${productId}`
     );
       setProduct(response.data);
     } catch (error) {
@@ -32,7 +34,7 @@ const ProductDetails = () => {
       const jwtToken = localStorage.getItem('jwtToken');
 
           const response = await axios.get(
-            `http://localhost:8080/addToCart/${productId}`,{
+            `${apiUrl}/addToCart/${productId}`,{
           
               headers: {
                  Authorization: `Bearer ${jwtToken}`,

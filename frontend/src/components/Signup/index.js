@@ -2,14 +2,17 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { NavLink } from 'react-router-dom';
 const Signup = () => {
+  const apiUrl = process.env.REACT_APP_API_URL;
+
   const [formData, setFormData] = useState({
     userName: '',
     userFirstName: '',
     userLastName: '',
+    userEmail:' ',
     userPassword: '',
   });
 
-  const { userName, userFirstName, userLastName, userPassword } = formData;
+  const { userName, userFirstName, userLastName,userEmail, userPassword } = formData;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -23,7 +26,7 @@ const Signup = () => {
     e.preventDefault();
 
     // Make a POST request using Axios
-    axios.post('http://localhost:8080/registerNewUser', formData)
+    axios.post(`${apiUrl}/registerNewUser`, formData)
       .then((response) => {
         console.log('User registration successful:', response.data);
         // Reset form fields after successful registration
@@ -31,6 +34,7 @@ const Signup = () => {
           userName: '',
           userFirstName: '',
           userLastName: '',
+          userEmail:' ',
           userPassword: '',
         });
       })
@@ -71,6 +75,16 @@ const Signup = () => {
             type="text"
             name="userLastName"
             value={userLastName}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div>
+          <label>Email:</label>
+          <input
+            type="text"
+            name="userEmail"
+            value={userEmail}
             onChange={handleChange}
             required
           />

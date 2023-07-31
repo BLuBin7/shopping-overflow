@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,NavLink } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 
 const Signin = () => {
+  const apiUrl = process.env.REACT_APP_API_URL;
+
     // qua trang home
   const navigate = useNavigate();
 
@@ -144,7 +146,7 @@ const Signin = () => {
       e.preventDefault();
   
       try {
-        const response = await axios.post('http://localhost:8080/authenticate', formData);
+        const response = await axios.post(`${apiUrl}/authenticate`, formData);
         const { user,jwtToken } = response.data; // Extract the jwtToken from the response
         console.log('Logged in:', jwtToken);
         // Handle successful login
@@ -194,7 +196,7 @@ const Signin = () => {
           />
         </div>
         <button type="submit" >Sign In</button>
-
+        <NavLink to="/forgotpassword">Forgot Password ?</NavLink>        
         {loginStatus && <p style={{ color: 'red' }}>{loginStatus}</p>}
       </form>
     </div>
