@@ -15,6 +15,8 @@ import Product from "./components/admin/Product";
 import AllProducts from "./components/admin/allProducts";
 import ProductDetails from "./components/admin/ProductDetails";
 import Cart from "./components/Cart";
+import ForgotPassword from "./components/Signin/ForgotPassword";
+import ResetPassword from "./components/Signin/ResetPassword";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
@@ -33,7 +35,8 @@ root.render(
         <Route path="/products/:productId" element={<ProductDetails/>} />
         {/* <Route path="/addtocart/:productId" element = {<AddToCart/>}></Route> */}
         <Route path="/cart" element={<Cart />} />
-
+        <Route path="/forgotpassword" element={<ForgotPassword />} />
+        <Route path="/resetpassword" element={<ResetPassword />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

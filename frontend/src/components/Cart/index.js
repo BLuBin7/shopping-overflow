@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { NavLink, useParams } from "react-router-dom";
 import axios from "axios";
 const Cart = () => {
+  const apiUrl = process.env.REACT_APP_API_URL;
+
   const { cartId } = useParams();
   const [cart, setCart] = useState([]);
   const [products, setProducts] = useState([]);
@@ -14,7 +16,7 @@ const Cart = () => {
     try {
       const jwtToken = localStorage.getItem("jwtToken");
 
-      const response = await axios.get("http://localhost:8080/getCartDetails", {
+      const response = await axios.get(`${apiUrl}/getCartDetails`, {
         headers: {
           Authorization: `Bearer ${jwtToken}`,
           "Content-Type": "application/json",

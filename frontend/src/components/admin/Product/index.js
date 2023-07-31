@@ -279,6 +279,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 const ProductForm = () => {
+  const apiUrl = process.env.REACT_APP_API_URL;
   const [product, setProduct] = useState({
     productName: '',
     productDescription: '',
@@ -314,7 +315,7 @@ const ProductForm = () => {
         formData.append('imageFile', product.productImages[i]);
       }
 
-      const response = await axios.post('http://localhost:8080/addNewProduct', formData, {
+      const response = await axios.post(`${apiUrl}/addNewProduct`, formData, {
         headers: {
            Authorization: `Bearer ${jwtToken}`,
           'Content-Type': 'multipart/form-data',
