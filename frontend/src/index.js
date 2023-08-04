@@ -17,7 +17,9 @@ import ProductDetails from "./components/admin/ProductDetails";
 import Cart from "./components/Cart";
 import ForgotPassword from "./components/Signin/ForgotPassword";
 import ResetPassword from "./components/Signin/ResetPassword";
+import Profile from "./components/User/Profile";
 const root = ReactDOM.createRoot(document.getElementById("root"));
+
 
 root.render(
   <React.StrictMode>
@@ -37,6 +39,7 @@ root.render(
         <Route path="/cart" element={<Cart />} />
         <Route path="/forgotpassword" element={<ForgotPassword />} />
         <Route path="/resetpassword" element={<ResetPassword />} />
+        <Route path="/profile/:userName" element={< Profile/>} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

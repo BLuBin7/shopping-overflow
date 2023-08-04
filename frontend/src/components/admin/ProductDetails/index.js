@@ -15,6 +15,7 @@ const ProductDetails = () => {
   }, [productId]);
 
   const fetchProductDetails = async () => {
+    const jwtToken = localStorage.getItem('jwtToken');
     try {
       const response = await axios.get(
         `${apiUrl}/getProductDetailsById/${productId}`
@@ -51,6 +52,7 @@ const ProductDetails = () => {
   return (
     <div>
       <p>Hello</p>
+      <p>Add by: {product.addedBy.userName}</p>
       <h1>{product.productName}</h1>
       <p>Actual Price: {product.productActualPrice}</p>
       <p>Discounted Price: {product.productDiscountedPrice}</p>
