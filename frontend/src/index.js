@@ -18,6 +18,7 @@ import Cart from "./components/Cart";
 import ForgotPassword from "./components/Signin/ForgotPassword";
 import ResetPassword from "./components/Signin/ResetPassword";
 import Profile from "./components/User/Profile";
+import ProductPopup from "./components/admin/PopupProduct";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 
@@ -40,6 +41,7 @@ root.render(
         <Route path="/forgotpassword" element={<ForgotPassword />} />
         <Route path="/resetpassword" element={<ResetPassword />} />
         <Route path="/profile/:userName" element={< Profile/>} />
+        <Route path="/allproducts/searchproduct" element={<ProductPopup/>} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
