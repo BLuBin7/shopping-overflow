@@ -1,4 +1,4 @@
-package com.example.backend.configuration;
+package com.example.backend.configuration.JwtOldVersion;
 
 
 import com.example.backend.service.JwtService;
