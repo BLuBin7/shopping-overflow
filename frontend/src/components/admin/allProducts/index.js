@@ -94,8 +94,10 @@ const AllProducts = () => {
   };
 
   const handleSearchChanged = (e) => {
+    setPageNumber(0);
     setSearchKey(e);
     setPopupOpen(true);
+    setPopupProducts([]);
   }
   return (
     <div>
