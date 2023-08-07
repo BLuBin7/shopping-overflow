@@ -35,7 +35,7 @@ const AllProducts = () => {
   useEffect(() => {
     // Fetch products from the backend API when the searchKey changes
     fetchProducts(pageNumber, searchKey);
-  }, [pageNumber,searchKey]);
+  }, [pageNumber, searchKey]);
   const fetchProducts = async (pageNumber, searchKey) => {
     try {
       const response = await axios.get(`${apiUrl}/getAllProducts`, {
@@ -45,11 +45,6 @@ const AllProducts = () => {
         },
       });
       
-      // const fetchedProducts = response.data;
-      // if (fetchedProducts.length === productsPerPage) {
-      //   setPageNumber((prevPage) => prevPage + 1);
-      // }
-
       setProducts(response.data);
     } catch (error) {
       console.error('Error fetching products:', error);
@@ -83,21 +78,13 @@ const AllProducts = () => {
     setPopupOpen(false);
   };
   
-  const handleSearch = () => {
-    // Reset the current page to 1 when performing a new search
-    setPageNumber(0);
-    setPopupOpen(true); // Open the popup after searching
-  };
-
-  const handleSearchChange = (e) => {
-    setSearchKey(e.target.value);
-  };
 
   const handleSearchChanged = (e) => {
     setPageNumber(0);
     setSearchKey(e);
     setPopupOpen(true);
-    setPopupProducts([]);
+    setPopupProducts([]); 
+    handleOpenPopup();
   }
   return (
     <div>
@@ -152,7 +139,12 @@ const AllProducts = () => {
       
        {/* Display the popup when isPopupOpen is true */}
        {isPopupOpen && (
-        <ProductPopup products={popupProducts} onClose={handleClosePopup} />
+         <ProductPopup
+         products={popupProducts}
+         onClose={handleClosePopup}
+         searchKey={searchKey}
+         fetchProducts={fetchProducts}
+       />
       )}
     </div>
   );
