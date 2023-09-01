@@ -3,11 +3,14 @@ import { useState, useEffect } from 'react';
 import {useNavigate,Routes,Route,NavLink} from 'react-router-dom';
 import AllProducts from '../admin/allProducts';
 import ProductDetails from '../admin/ProductDetails';
+import Slider from '../Slider';
+import Header from '../Header';
 import PropTypes from 'prop-types';
 const Home = () => {
     const navigate = useNavigate();
     const [userName, setUserName] = useState('');
-  
+    const [searchKey, setSearchKey] = useState('');
+
     useEffect(() => {
       // Check if the user is authenticated (e.g., if a JWT token is present)
       const jwtToken = localStorage.getItem('jwtToken');
@@ -35,12 +38,13 @@ const Home = () => {
           <h2>Welcome, {userName}!</h2>
       {/* Other content */}
       <h1>My E-commerce Store</h1>
-      <nav>
-        {/* Use NavLink for active styling */}
+      <Slider />
+      <AllProducts />
+      {/* <nav>
         <NavLink to="/allproducts" >
           All Products
         </NavLink>
-      </nav>
+      </nav>  */}
       </div>
     );
   };

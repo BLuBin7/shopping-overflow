@@ -1,10 +1,10 @@
 import React from 'react';
-
+import './style.scss';
 const Product = (props) => {
   const { productId, productName, productDescription, productDiscountedPrice, productActualPrice, productImages } = props;
 
   return (
-    <div className="product">
+    <div className="product" >
       <h2>{productName}</h2>
       <p>Description: {productDescription}</p>
       <p>Discounted Price: ${productDiscountedPrice}</p>

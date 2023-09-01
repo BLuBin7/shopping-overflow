@@ -277,7 +277,6 @@
 
 import React, { useState } from 'react';
 import axios from 'axios';
-
 const ProductForm = () => {
   const apiUrl = process.env.REACT_APP_API_URL;
   const [product, setProduct] = useState({
@@ -338,7 +337,7 @@ const ProductForm = () => {
   };
 
   return (
-    <div>
+    <div >
       <h2>Add Product</h2>
       <form onSubmit={handleSubmit}>
         <div>
