@@ -1,0 +1,54 @@
+.product {
+    border: 1px solid #ccc;
+    padding: 150px;
+    // margin: 20px;
+    background-color:bisque;
+    display: flex ;
+    flex-wrap: wrap; // Wrap items to the next row
+    gap: 12px; // Add some space between items
+    h1 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+    
+    .one-product {
+      flex: 0 0 calc(16.66% - 20px); // Six items per row
+      border: 1px solid #ccc;
+      background-color: azure;
+      height: 10; /* Set the height to 0 to create a square */
+      width: 10; /* Set the width to 0 to create a square */
+      position: relative;
+      overflow: hidden;
+    }
+
+    p {
+      border-radius: 2.5%;
+      margin-bottom: 5px;
+    }
+    
+    img {
+      max-width: 100%;
+      height: auto;
+      margin-top: 10px;
+      object-fit: cover;
+    }
+    .pagination-buttons {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-top: 20px; // Add some space between products and buttons
+  
+      button {
+        margin: 0 10px;
+        padding: 8px 16px;
+        background-color: #f8f8f8;
+        border: 1px solid #ccc;
+        cursor: pointer;
+  
+        &:disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+        }
+      }
+    }
+  }

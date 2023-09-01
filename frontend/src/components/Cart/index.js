@@ -15,7 +15,7 @@ const Cart = () => {
   const fetchProducts = async () => {
     try {
       const jwtToken = localStorage.getItem("jwtToken");
-
+      
       const response = await axios.get(`${apiUrl}/getCartDetails`, {
         headers: {
           Authorization: `Bearer ${jwtToken}`,

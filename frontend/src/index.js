@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
@@ -19,31 +19,36 @@ import ForgotPassword from "./components/Signin/ForgotPassword";
 import ResetPassword from "./components/Signin/ResetPassword";
 import Profile from "./components/User/Profile";
 import ProductPopup from "./components/admin/PopupProduct";
+import ProductResponse from "./components/ProductResponse";
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-
 root.render(
+  // <React.StrictMode>
+  //   <BrowserRouter>
+  //     <Routes>
+  //       {/* component trước sẽ là cha(sẽ đc vẫn giữ lại khi bị thay đổi) */}
+  //       <Route path="/" element={<App />}>
+  //         {/* <Route path="/home" element={<Home/>} /> */}
+  //       </Route>
+  //       <Route path="/signup" element={<Signup />} />
+  //       <Route path="/signin" element={<Signin />} />
+  //       <Route path="/admin-dashboard" element={<AdminDashboard />} />
+  //       <Route path="/addproduct" element={<Product />} />
+  //       <Route path="/allproducts" element={<AllProducts />} />
+  //       <Route path="/products/:productId" element={<ProductDetails/>} />
+  //       {/* <Route path="/addtocart/:productId" element = {<AddToCart/>}></Route> */}
+  //       <Route path="/cart" element={<Cart />} />
+  //       <Route path="/forgotpassword" element={<ForgotPassword />} />
+  //       <Route path="/resetpassword" element={<ResetPassword />} />
+  //       <Route path="/profile/:userName" element={< Profile/>} />
+  //       <Route path="/allproducts/searchproduct" element={<ProductPopup/>} />
+  //     </Routes>
+  //   </BrowserRouter>
+  // </React.StrictMode>
+
   <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        {/* component trước sẽ là cha(sẽ đc vẫn giữ lại khi bị thay đổi) */}
-        <Route path="/" element={<App />}>
-          {/* <Route path="/home" element={<Home/>} /> */}
-        </Route>
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/signin" element={<Signin />} />
-        <Route path="/admin-dashboard" element={<AdminDashboard />} />
-        <Route path="/addproduct" element={<Product />} />
-        <Route path="/allproducts" element={<AllProducts />} />
-        <Route path="/products/:productId" element={<ProductDetails/>} />
-        {/* <Route path="/addtocart/:productId" element = {<AddToCart/>}></Route> */}
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/forgotpassword" element={<ForgotPassword />} />
-        <Route path="/resetpassword" element={<ResetPassword />} />
-        <Route path="/profile/:userName" element={< Profile/>} />
-        <Route path="/allproducts/searchproduct" element={<ProductPopup/>} />
-      </Routes>
-    </BrowserRouter>
+    <App />
   </React.StrictMode>
 );
 
