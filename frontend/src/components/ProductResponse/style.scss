@@ -1,0 +1,56 @@
+// ProductResponse.scss
+
+.product {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: #ccc;
+  
+    .one-product-row {
+      flex: 0 0 calc(100% - 20px); /* Adjust the width as needed */
+      margin: 10px;
+      padding: 10px;
+      border: 1px solid #fff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      background-color:cadetblue;
+      
+      &:hover {
+        border-color: #007bff;
+      }
+  
+      a {
+        font: 1.5em Arial;
+        text-decoration:double;
+        color: #333;
+      }
+  
+      img {
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+      }
+  
+      h3 {
+        font-size: 16px;
+        margin: 0;
+      }
+    }
+    .pagination-buttons {
+      margin-top: 20px;
+  
+      button {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 8px 16px;
+        cursor: pointer;
+        margin-right: 10px;
+  
+        &:disabled {
+          background-color: #ccc;
+          cursor: not-allowed;
+        }
+      }
+    }
+  }
+  

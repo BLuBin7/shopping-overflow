@@ -1,22 +1,27 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { NavLink } from "react-router-dom";
-import ProductPopup from './../PopupProduct/index';
+import { NavLink,useLocation } from "react-router-dom";
+import ProductPopup from "./../PopupProduct/index";
+import "./style.scss";
 
 // tên hoa camelcase bị lỗi??
 const AllProducts = () => {
+  // Lấy thông tin từ URL hiện tại
+  const location = useLocation();
+  const searchKeyFromURL = new URLSearchParams(location.search).get("searchKey");
+
   const apiUrl = process.env.REACT_APP_API_URL;
   const [products, setProducts] = useState([]);
 
   // amount product in one page
   const [currentPage, setCurrentPage] = useState(1);
-  const productsPerPage = 12;
+  const productsPerPage = 30;
   const [pageNumber, setPageNumber] = useState(0);
 
   //Search
   const [isPopupOpen, setPopupOpen] = useState(false);
   const [popupProducts, setPopupProducts] = useState([]);
-  const [searchKey, setSearchKey] = useState('');
+  const [searchKey, setSearchKey] = useState("");
 
   // useEffect(() => {
   //   // Fetch products from the backend API when the component mounts
@@ -34,20 +39,20 @@ const AllProducts = () => {
 
   useEffect(() => {
     // Fetch products from the backend API when the searchKey changes
-    fetchProducts(pageNumber, searchKey);
-  }, [pageNumber, searchKey]);
+    fetchProducts(pageNumber, searchKeyFromURL);
+  }, [pageNumber, searchKeyFromURL]);
   const fetchProducts = async (pageNumber, searchKey) => {
     try {
       const response = await axios.get(`${apiUrl}/getAllProducts`, {
         params: {
           pageNumber: pageNumber,
-          searchKey: searchKey,
+          searchKey: searchKeyFromURL,
         },
       });
-      
+
       setProducts(response.data);
     } catch (error) {
-      console.error('Error fetching products:', error);
+      console.error("Error fetching products:", error);
     }
   };
 
@@ -77,18 +82,19 @@ const AllProducts = () => {
   const handleClosePopup = () => {
     setPopupOpen(false);
   };
-  
 
   const handleSearchChanged = (e) => {
     setPageNumber(0);
     setSearchKey(e);
-    setPopupOpen(true);
-    setPopupProducts([]); 
-    handleOpenPopup();
-  }
+    // setPopupOpen(true);
+    // setPopupProducts([]);
+    // handleOpenPopup();
+  };
   return (
-    <div>
-      <h1>Product List</h1>
+    <div className="product">
+
+      {/* <h1>Product List</h1> */}
+
       {/* search */}
       <input
         type="text"
@@ -100,16 +106,15 @@ const AllProducts = () => {
       {/* <NavLink onClick={handleSearch}  >Search</NavLink> */}
 
       {products.map((product) => (
-        <div key={product.productId}>
+        <div key={product.productId} className="one-product">
           {/* Use NavLink to link to individual product details page */}
           <NavLink
             to={`/products/${product.productId}`}
             style={{ textDecoration: "none" }}
           >
-            <h3>{product.productName}</h3>
-            <p>Actual Price: {product.productActualPrice}</p>
+            {/* <p>Actual Price: {product.productActualPrice}</p>
             <p>Discounted Price: {product.productDiscountedPrice}</p>
-            <p>Description: {product.productDescription}</p>
+          <p>Description: {product.productDescription}</p> */}
             {product.productImages.map((image) => (
               <img
                 key={image.id}
@@ -122,29 +127,38 @@ const AllProducts = () => {
                 }}
               />
             ))}
+            <h3>{product.productName}</h3>
             <hr />
           </NavLink>
         </div>
       ))}
 
       {/* amount of products in one page */}
-      <div>
-        <button onClick={prevPage} disabled={getCurrentProducts().length ===1}>
-          Previous Page
-        </button>
-        <button onClick={nextPage} disabled={getCurrentProducts().length ===0}>
-          Next Page
-        </button>
+      <div className="pagination-buttons">
+        <div>
+          <button
+            onClick={prevPage}
+            disabled={getCurrentProducts().length === 1}
+          >
+            Previous Page
+          </button>
+          <button
+            onClick={nextPage}
+            disabled={getCurrentProducts().length === 0}
+          >
+            Next Page
+          </button>
+        </div>
       </div>
-      
-       {/* Display the popup when isPopupOpen is true */}
-       {isPopupOpen && (
-         <ProductPopup
-         products={popupProducts}
-         onClose={handleClosePopup}
-         searchKey={searchKey}
-         fetchProducts={fetchProducts}
-       />
+
+      {/* Display the popup when isPopupOpen is true */}
+      {isPopupOpen && (
+        <ProductPopup
+          products={popupProducts}
+          onClose={handleClosePopup}
+          searchKey={searchKey}
+          fetchProducts={fetchProducts}
+        />
       )}
     </div>
   );
