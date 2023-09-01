@@ -35,7 +35,7 @@ public class ProductService {
     }
 
     public List<Product> getAllProducts(int pageNumber, String searchKey) {
-        Pageable pageable = PageRequest.of(pageNumber,12);
+        Pageable pageable = PageRequest.of(pageNumber,30);
 
         if(searchKey.equals("")) {
             return (List<Product>) productDao.findAll(pageable);
