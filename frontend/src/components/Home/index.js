@@ -37,7 +37,8 @@ const Home = () => {
       <div>
       <h1 className = "display-4">My E-commerce Store</h1>
       {/* Other content */}
-          <p className = "lead text-start">Welcome, {userName}!</p>
+      <p className = "lead text-start">Welcome, {userName}!</p>
+      <h1>My E-commerce Store</h1>
       <Slider />
       <AllProducts />
       {/* <nav>

@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import "./style.scss";
+<<<<<<< HEAD
 import { Link, NavLink, Router, Route, useNavigate } from "react-router-dom";
+=======
+import { Link, NavLink, Router, Route, useNavigate  } from "react-router-dom";
+>>>>>>> 707579d67bc389442dca491aaf65f454d6995ae9
 import Login from "../Signup";
 import AllProducts from "../admin/allProducts";
 const Header = () => {
@@ -95,6 +99,7 @@ const Header = () => {
               />
               <button type="submit">Search</button>
             </form> */}
+
       </nav>
     </div>
   );
