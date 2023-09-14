@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router,Outlet,Route,Routes,useNavigate } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Signup from "./components/Signup";
 import Header from "./components/Header";

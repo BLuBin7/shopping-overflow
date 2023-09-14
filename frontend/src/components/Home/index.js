@@ -35,9 +35,9 @@ const Home = () => {
     // Other content and UI elements for the Home component
     return (
       <div>
-          <h2>Welcome, {userName}!</h2>
+      <h1 className = "display-4">My E-commerce Store</h1>
       {/* Other content */}
-      <h1>My E-commerce Store</h1>
+          <p className = "lead text-start">Welcome, {userName}!</p>
       <Slider />
       <AllProducts />
       {/* <nav>

@@ -96,13 +96,13 @@ const AllProducts = () => {
       {/* <h1>Product List</h1> */}
 
       {/* search */}
-      <input
+      {/* <input
         type="text"
         value={searchKey}
         // onChange={(e) => setSearchKey(e.target.value) }
         onChange={(e)=>handleSearchChanged(e.target.value)} 
         placeholder="Search products"
-      />
+      /> */}
       {/* <NavLink onClick={handleSearch}  >Search</NavLink> */}
 
       {products.map((product) => (
