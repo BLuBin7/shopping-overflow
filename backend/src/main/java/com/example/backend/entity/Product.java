@@ -32,6 +32,16 @@ public class Product {
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User addedBy;
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Category category_name;
+
+    public Category getCategory_name() {
+        return category_name;
+    }
+
+    public void setCategory_name(Category category_name) {
+        this.category_name = category_name;
+    }
 
     public User getAddedBy() {
         return addedBy;

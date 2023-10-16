@@ -2,10 +2,8 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import {useNavigate,Routes,Route,NavLink} from 'react-router-dom';
 import AllProducts from '../admin/allProducts';
-import ProductDetails from '../admin/ProductDetails';
 import Slider from '../Slider';
-import Header from '../Header';
-import PropTypes from 'prop-types';
+import Category from '../Category';
 const Home = () => {
     const navigate = useNavigate();
     const [userName, setUserName] = useState('');
@@ -40,6 +38,8 @@ const Home = () => {
       <p className = "lead text-start">Welcome, {userName}!</p>
       <h1>My E-commerce Store</h1>
       <Slider />
+      <br />
+      <Category/>
       <AllProducts />
       {/* <nav>
         <NavLink to="/allproducts" >
