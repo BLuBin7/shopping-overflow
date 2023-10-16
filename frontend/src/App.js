@@ -18,7 +18,7 @@ import ResetPassword from "./components/Signin/ResetPassword";
 import Profile from "./components/User/Profile";
 import ProductPopup from "./components/admin/PopupProduct";
 import ProductResponse from "./components/ProductResponse";
-
+import Category from './components/Category';
 
 function App() {
   const searchKeyFromURL = new URLSearchParams(window.location.search).get(
@@ -33,7 +33,7 @@ function App() {
         <Route path="/" element={<Home />}>
           {/* <Outlet /> */}
         </Route>
-          
+        <Route path="/category" element={<Category />} />
         <Route path="/productresponse" element={<ProductResponse searchKey={searchKeyFromURL}  />} />
         
         <Route path="/allproducts" element={<AllProducts  searchKey={searchKeyFromURL}  />} />

@@ -58,7 +58,7 @@
 //         },
 //       });
 
-//       console.log('Product added successfully:', response.data);  
+//       console.log('Product added successfully:', response.data);
 
 //       // Reset form fields after successful submission
 //       setProduct({
@@ -141,7 +141,6 @@
 // //   }
 // // };
 
-
 // // last
 // const handleChange = (e) => {
 //   const { name, value } = e.target;
@@ -187,7 +186,7 @@
 //       return {
 //         ...prevProduct,
 //         productImages: updatedImages,
-//       };  
+//       };
 //     });
 //   };
 
@@ -231,27 +230,27 @@
 //         <div>
 //           <label>Product Images:</label>
 //           {/* <input type="file" name="productImages" onChange={handleChange} multiple /> */}
-//           <input 
-//           type="file" 
+//           <input
+//           type="file"
 //           // accept="image/*"
 //           name="productImages"
-//           onChange={onFileSelected}  
-//           // onChange={handleUploadClick}  
+//           onChange={onFileSelected}
+//           // onChange={handleUploadClick}
 //           // multiple
 //           />
 //         </div>
 //         {/* <button type="submit">Add Product</button> */}
 //         <button type="submit" >Add Product</button>
 //       </form>
-//       <div className="col-6">
+//       <div classNameName="col-6">
 //             <div>
-//               <div className="mt-5">
-//                 <div className="row">
+//               <div classNameName="mt-5">
+//                 <div classNameName="row">
 //                   {product.productImages.map((image, index) => (
-//                     <div className="col-3" key={index}>
+//                     <div classNameName="col-3" key={index}>
 //                       <div style={{ position: "relative" }}>
 //                         <span
-//                           className="btn-remove-image"
+//                           classNameName="btn-remove-image"
 //                           onClick={() => removeImages(index)}
 //                         >
 //                           x
@@ -275,13 +274,19 @@
 
 // export default Product;
 
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useState } from "react";
+import axios from "axios";
+
+import ButtonGroup from "react-bootstrap/ButtonGroup";
+import Dropdown from "react-bootstrap/Dropdown";
+import DropdownButton from "react-bootstrap/DropdownButton";
+import SplitButton from "react-bootstrap/SplitButton";
+
 const ProductForm = () => {
   const apiUrl = process.env.REACT_APP_API_URL;
   const [product, setProduct] = useState({
-    productName: '',
-    productDescription: '',
+    productName: "",
+    productDescription: "",
     productDiscountedPrice: 0,
     productActualPrice: 0,
     productImages: [],
@@ -306,38 +311,44 @@ const ProductForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const jwtToken = localStorage.getItem('jwtToken');
+      const jwtToken = localStorage.getItem("jwtToken");
       const formData = new FormData();
-      formData.append('product', JSON.stringify(product));
+      formData.append("product", JSON.stringify(product));
 
       for (let i = 0; i < product.productImages.length; i++) {
-        formData.append('imageFile', product.productImages[i]);
+        formData.append("imageFile", product.productImages[i]);
       }
 
       const response = await axios.post(`${apiUrl}/addNewProduct`, formData, {
         headers: {
-           Authorization: `Bearer ${jwtToken}`,
-          'Content-Type': 'multipart/form-data',
+          Authorization: `Bearer ${jwtToken}`,
+          "Content-Type": "multipart/form-data",
         },
       });
 
-      console.log('Product added successfully:', response.data);
+      console.log("Product added successfully:", response.data);
 
       // Reset form fields after successful submission
       setProduct({
-        productName: '',
-        productDescription: '',
+        productName: "",
+        productDescription: "",
         productDiscountedPrice: 0,
         productActualPrice: 0,
         productImages: [],
       });
     } catch (error) {
-      console.error('Error adding product:', error);
+      console.error("Error adding product:", error);
     }
   };
 
+  const [selectedCategory, setSelectedCategory] = useState(""); // State để lưu trữ danh mục được chọn
+
+  const handleSelect = (category) => {
+    setSelectedCategory(category);
+  };
+
   return (
-    <div >
+    <div>
       <h2>Add Product</h2>
       <form onSubmit={handleSubmit}>
         <div>
@@ -381,8 +392,39 @@ const ProductForm = () => {
         </div>
         <div>
           <label>Product Images:</label>
-          <input type="file" name="imageFile" onChange={handleFileChange} multiple />
+          <input
+            type="file"
+            name="imageFile"
+            onChange={handleFileChange}
+            multiple
+          />
         </div>
+              Danh Mục
+          <Dropdown className="d-inline mx-2">
+            <Dropdown.Toggle id="dropdown-autoclose-true">
+              {selectedCategory}
+            </Dropdown.Toggle>
+
+            <Dropdown.Menu>
+              <Dropdown.Item
+                href="#"
+                onClick={() => handleSelect("Thời Trang Nữ")}
+              >
+                Thời Trang Nữ
+              </Dropdown.Item>
+              <Dropdown.Item
+                href="#"
+                onClick={() => handleSelect("Thời Trang Nam")}
+              >
+                Thời Trang Nam
+              </Dropdown.Item>
+              <Dropdown.Item href="#" onClick={() => handleSelect("Sắc Đẹp")}>
+                Sắc Đẹp
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+        
+        <br/>
         <button type="submit">Add Product</button>
       </form>
     </div>
