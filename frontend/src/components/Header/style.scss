@@ -1,37 +1,115 @@
-/* Header component styles */
-
 .header {
-    background: #333;
-    color: #fff;
-    text-align: left;
-    padding: 1rem;
-    display: flex; /* Display the header and navigation in a row */
-    align-items: center; 
+  background-color: #ff7f50; /* Màu cam */
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  .logo {
+    flex: 1;
+    img {
+      max-height: 50px; /* Kích thước logo */
+    }
   }
 
-  .nav {
-    font-size: large;
+  .search-bar {
+    flex: 2;
+    display: flex;
+    justify-content: center; /* Canh giữa thanh tìm kiếm */
+    align-items: center;
+
+    input {
+      width: 300px;
+      padding: 8px;
+      border: none;
+      border-radius: 20px;
+      outline: none;
+      transition: all 0.3s ease;
+      margin-right: 10px;
+
+      &:focus {
+        width: 400px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      }
+    }
+
+    .btn-search {
+      padding: 8px 20px;
+      background-color: #fff;
+      color: #ff7f50;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background-color: #ff7f50;
+        color: #fff;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+    }
+  }
+
+  .nav-left {
+    flex: 2; /* Canh phần này bên trái */
+    display: flex;
+    align-items: center;
 
     ul {
-      display: flex; /* Display the list items in a row */
-      justify-content: center; /* Center the list items horizontally */
+      display: flex;
       list-style: none;
-      padding: 0;
-  
+      padding-left: 0;
+      margin-left: 20px;
+
       li {
-        margin: 0;
-        padding: 0;
-      }
-  
-      a {
-        color: #fff;
-        text-decoration: none;
-        font-weight: bold;
-        margin: 0 1rem;
-  
-        &:hover {
-          text-decoration: underline;
+        margin-right: 20px;
+
+        .nav-link {
+          font-size: 16px;
+          color: #fff;
+          text-decoration: none;
+          font-weight: 500;
+          padding: 5px 15px;
+          border-radius: 5px;
+          transition: all 0.3s ease;
+
+          &:hover {
+            background-color: #fff;
+            color: #ff7f50;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          }
         }
       }
     }
   }
+  .nav-right {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end; /* Đẩy Sign In và Sign Up sang phải */
+    ul {
+      display: flex;
+      list-style: none;
+
+      li {
+        margin-left: 15px;
+
+        .btn {
+          font-size: 14px;
+          padding: 8px 15px;
+          border-radius: 5px;
+          color: #fff;
+          background-color: transparent;
+          border: 1px solid #fff;
+          transition: all 0.3s ease;
+
+          &:hover {
+            background-color: #fff;
+            color: #ff7f50;
+            border-color: #ff7f50;
+          }
+        }
+      }
+    }
+  }
+}

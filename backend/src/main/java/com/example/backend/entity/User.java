@@ -1,11 +1,22 @@
 package com.example.backend.entity;
 
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
+
 import javax.persistence.*;
 
+import java.util.List;
 import java.util.Set;
 
-@Entity
+@Entity(name = "User")
+@Table(name = "\"user\"")
+@Data
+@Accessors(chain = true)
+@AllArgsConstructor
+@NoArgsConstructor
 public class User {
     @Id
     private String userName;
@@ -16,15 +27,36 @@ public class User {
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "USER_ROLE",
             joinColumns = {
-                    @JoinColumn(name = "USER_ID")
+                    @JoinColumn(name = "USER_NAME", referencedColumnName = "userName")
             },
             inverseJoinColumns = {
-                    @JoinColumn(name = "ROLE_ID")
+                    @JoinColumn(name = "ROLE_NAME", referencedColumnName = "roleName")
             }
     )
     private Set<Role> role;
 
-//    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+
+//    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//    @JoinTable(name = "USER_MESSAGE",
+//            joinColumns = {
+//                    @JoinColumn(name = "USER_ID")
+//            },
+//            inverseJoinColumns = {
+//                    @JoinColumn(name = "MESSAGE_ID")
+//            }
+//    )
+
+//    @JoinColumn(name = "list-comment")
+//    private List<Message> messageList;
+//
+//    public List<Message> getMessageList() {
+//        return messageList;
+//    }
+//
+//    public void setMessageList(List<Message> messageList) {
+//        this.messageList = messageList;
+//    }
+    //    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 //    @JoinTable(name = "USER_PRODUCT",
 //            joinColumns = {
 //                    @JoinColumn(name = "USER_ID")

@@ -86,25 +86,9 @@ const AllProducts = () => {
   const handleSearchChanged = (e) => {
     setPageNumber(0);
     setSearchKey(e);
-    // setPopupOpen(true);
-    // setPopupProducts([]);
-    // handleOpenPopup();
   };
   return (
     <div className="product">
-
-      {/* <h1>Product List</h1> */}
-
-      {/* search */}
-      {/* <input
-        type="text"
-        value={searchKey}
-        // onChange={(e) => setSearchKey(e.target.value) }
-        onChange={(e)=>handleSearchChanged(e.target.value)} 
-        placeholder="Search products"
-      /> */}
-      {/* <NavLink onClick={handleSearch}  >Search</NavLink> */}
-
       {products.map((product) => (
         <div key={product.productId} className="one-product">
           {/* Use NavLink to link to individual product details page */}
@@ -112,9 +96,6 @@ const AllProducts = () => {
             to={`/products/${product.productId}`}
             style={{ textDecoration: "none" }}
           >
-            {/* <p>Actual Price: {product.productActualPrice}</p>
-            <p>Discounted Price: {product.productDiscountedPrice}</p>
-          <p>Description: {product.productDescription}</p> */}
             {product.productImages.map((image) => (
               <img
                 key={image.id}

@@ -2,19 +2,18 @@ package com.example.backend.service;
 
 
 import com.example.backend.configuration.JwtOldVersion.JwtRequestFilter;
-import com.example.backend.dao.CartDao;
-import com.example.backend.dao.ProductDao;
-import com.example.backend.dao.UserDao;
-import com.example.backend.entity.Cart;
-import com.example.backend.entity.Product;
-import com.example.backend.entity.User;
+import com.example.backend.dao.*;
+import com.example.backend.entity.*;
+import org.aspectj.bridge.ICommand;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -30,11 +29,10 @@ public class ProductService {
     private CartDao cartDao;
 
     public Product addNewProduct(Product product) {
-//        userDao.save(user);
         return productDao.save(product);
     }
 
-    public List<Product> getAllProducts(int pageNumber, String searchKey) {
+    public List<Product> getAllProducts(int pageNumber,String searchKey) {
         Pageable pageable = PageRequest.of(pageNumber,30);
 
         if(searchKey.equals("")) {
@@ -44,7 +42,6 @@ public class ProductService {
                     searchKey, searchKey, pageable
             );
         }
-
     }
 
     public Product getProductDetailsById(Integer productId) {

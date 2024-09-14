@@ -1,0 +1,47 @@
+server:
+  port: 8080
+
+spring:
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: update
+  profiles:
+    active: dev
+  servlet:
+    multipart:
+      enabled: true
+#      file-size-threshold: 2MB
+#      max-file-size: 10MB
+#      max-request-size: 10MB
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/ecommerce
+    username: root
+    password: blubin
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  redis:
+    database: 0
+    password: blubin
+    host: 127.0.0.1
+#    host: localhost
+    port: 6379
+    timeout: 60000
+  kafka:
+    server-config: localhost:29092
+    group-noti-id: noti-group
+    comment-noti-topic: comment-noti-topic
+    follow-noti-topic: follow-noti-topic
+    like-post-noti-topic: like-noti-topic~
+    bootstrap-servers: localhost:9092
+    sleuth:
+      messaging:
+        kafka:
+          enabled:  data
+
+  rest:
+    base-path: /api
+    default-page-size: 20
+
+

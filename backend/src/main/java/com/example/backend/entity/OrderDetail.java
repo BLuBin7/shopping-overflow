@@ -1,9 +1,18 @@
 package com.example.backend.entity;
 
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
+
 import javax.persistence.*;
 
-@Entity
+@Entity(name = "Order_Details")
+@Table(name = "\"order_details\"")
+@Data
+@Accessors(chain = true)
+@AllArgsConstructor
 public class OrderDetail {
 
     @Id

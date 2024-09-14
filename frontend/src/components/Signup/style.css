@@ -1,0 +1,78 @@
+/* Container để căn giữa nội dung */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4; /* Màu nền của trang */
+  }
+  
+  /* Form đăng ký */
+  .signup-form {
+    max-width: 500px;
+    width: 100%;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+  }
+  
+  /* Tiêu đề của form */
+  .signup-form h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  /* Các trường nhập liệu */
+  .signup-form .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .signup-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .signup-form input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Đảm bảo padding không làm rộng phần tử */
+  }
+  
+  /* Nút đăng ký */
+  .signup-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff; /* Màu xanh dương */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .signup-form button:hover {
+    background-color: #0056b3; /* Màu xanh đậm hơn khi hover */
+  }
+  
+  /* Liên kết và các nút bổ sung */
+  .signup-form p {
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  .signup-form p a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .signup-form p a:hover {
+    text-decoration: underline;
+  }
+  
