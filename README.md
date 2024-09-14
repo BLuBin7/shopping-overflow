@@ -9,7 +9,7 @@ Developed a comprehensive e-commerce platform enabling seamless online shopping 
 - Promotions: Apply and display discounts.
 - Reviews: Submit and manage product reviews.
 - Brand and Category Management: Manage brands and product categories.
-Admin Dashboard: Manage orders, products, users, and generate reports.
+- Admin Dashboard: Manage orders, products, users, and generate reports.
 
 ## Database Schema
 
