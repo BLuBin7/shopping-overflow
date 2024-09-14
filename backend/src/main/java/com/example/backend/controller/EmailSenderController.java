@@ -24,7 +24,6 @@
 ////    public void sendEmail(){
 ////        emailSenderService.sendEmail("haihaha078@gmail.com","Subject","Non");
 ////    }
-//
 //        private final JavaMailSender mailSender;
 //        private final JwtUtil jwtUtil;
 //
@@ -32,9 +31,6 @@
 //        this.mailSender = mailSender;
 //        this.jwtUtil = jwtUtil;
 //    }
-//
-//    @Autowired
-//
 //
 //    @PostMapping({"/forgo"})
 //    public void sendPasswordResetEmail(@RequestBody EmailRequest emailRequest) {

@@ -1,6 +1,8 @@
 package com.example.backend.dao;
 
+import com.example.backend.entity.Category;
 import com.example.backend.entity.Product;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -14,4 +16,6 @@ public interface ProductDao extends CrudRepository<Product, Integer> {
     public List<Product> findByProductNameContainingIgnoreCaseOrProductDescriptionContainingIgnoreCase(
             String key1, String key2, Pageable pageable
     );
+
+    Page<Product> findByCategory(Category category, Pageable pageable);
 }

@@ -1,0 +1,37 @@
+/* SliderComponent.css */
+
+.slider-container {
+    position: relative;
+    margin: 0 auto;
+    max-width: 1200px; /* Adjust based on your design */
+    padding: 0 15px; /* Ensure there is space on the sides */
+  }
+  
+  .slick-slider {
+    margin: 0 -90px; /* Adjust margin to align with container */
+  }
+  
+  .slick-dots {
+    bottom: 10px; /* Position dots near the bottom */
+  }
+  
+  .slick-dots li button:before {
+    font-size: 12px; /* Adjust dot size */
+    color: #000; /* Dot color */
+  }
+  
+  .slick-dots li.slick-active button:before {
+    color: #ff5722; /* Active dot color */
+  }
+  
+  .slider-item {
+    padding: 0 15px; /* Adjust padding for spacing */
+  }
+  
+  .slider-image {
+    width: 100%;
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 10px; /* Rounded corners for images */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  }
+  

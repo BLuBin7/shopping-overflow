@@ -18,94 +18,37 @@ const Header = () => {
   };
 
   return (
-    <div style={{ backgroundColor: "orange" }}>
-      <h1>My Website</h1>
-      <div className="row">
-        <div className="col-md-6">
-          <nav className="nav">
-            <ul className="nav ">
-              <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="/">
-                  Home
-                </a>
-              </li>
-              <li className="nav-item">
-                <a
-                  className="nav-link active"
-                  aria-current="page"
-                  href="/about"
-                >
-                  About
-                </a>
-              </li>
-              <li className="nav-item">
-                <a
-                  className="nav-link active"
-                  aria-current="page"
-                  href="/contact"
-                >
-                  Contact
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-
-        <div className="col-md-6">
-          <nav className="nav justify-content-end">
-            <ul className="nav ">
-              <li className="nav-item">
-                <NavLink to="/signup" className="ms-auto">
-                  Sign up
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink to="/signin" className="ms-auto">
-                  Sign in
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <a href="/cart" className="ms-2">
-                  Cart
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </div>
-
-      <nav className="nav justify-content-center">
-        <ul>
-          <form className="d-flex" onSubmit={handleSearchSubmit}>
-            <input
-              className="form-control me-2"
-              type="text"
-              aria-label="Search"
-              name="searchKey"
-              value={searchKey}
-              onChange={(e) => setSearchKey(e.target.value)}
-              placeholder="Search products..."
-              style={{ width: "700px" }}
-            />
-            <button className="btn btn-outline-success" type="submit">
-              Search
-            </button>
-          </form>
-        </ul>
-
-        {/* <form onSubmit={handleSearchSubmit}>
-              <input
-                type="text"
-                name="searchKey"
-                value={searchKey}
-                onChange={(e) => setSearchKey(e.target.value)}
-                placeholder="Search products..."
-              />
-              <button type="submit">Search</button>
-            </form> */}
-
-      </nav>
-    </div>
+    <div className="header">
+  {/* <div className="logo">
+    <img src="/path/to/logo.png" alt="Logo" />
+  </div> */}
+  <nav className="nav-left">
+    <ul>
+      <li><NavLink className="nav-link" to="/">Home</NavLink></li>
+      <li><NavLink className="nav-link" to="/about">About</NavLink></li>
+      <li><NavLink className="nav-link" to="/contact">Contact</NavLink></li>
+    </ul>
+  </nav>
+  
+  <div className="search-bar">
+    <form onSubmit={handleSearchSubmit}>
+      <input
+        type="text"
+        placeholder="Search products..."
+        value={searchKey}
+        onChange={(e) => setSearchKey(e.target.value)}
+      />
+      <button className="btn-search" type="submit">Search</button>
+    </form>
+  </div>
+  <nav className="nav-right">
+    <ul>
+      <li><NavLink className="btn" to="/signup">Sign up</NavLink></li>
+      <li><NavLink className="btn" to="/signin">Sign in</NavLink></li>
+      {/* <li><NavLink className="btn" to="/cart">Cart</NavLink></li> */}
+    </ul>
+  </nav>
+</div>
   );
 };
 

@@ -1,0 +1,50 @@
+.category-container {
+  padding: 0 20px;
+  overflow-x: auto; 
+  white-space: nowrap; 
+  width: 100%;
+  height: auto;
+}
+
+.category-row {
+  margin-bottom: 20px; /* Space between rows */
+}
+
+.category-item {
+  margin-bottom: 20px; /* Space between items */
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; 
+  max-width: 100px; /* Maximum width for each category item */
+  margin: 0 auto; /* Center align items */
+}
+
+.category-item:hover {
+  transform: scale(1.05); /* Slightly enlarge on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+.category-link {
+  text-decoration: none;
+  color: inherit; /* Inherit color from parent */
+}
+
+.category-image {
+  border-radius: 10px;
+  border: 2px solid #f0f0f0; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  max-height: 90px; /* Adjust image height */
+  object-fit: cover; /* Ensure image covers its container */
+}
+
+.category-title {
+  margin-top: 8px; /* Reduced space for a more compact look */
+  font-size: 14px;
+  font-weight: bold;
+  /* color: #333; Text color */
+}
+
+@media (max-width: 767px) {
+  .category-item {
+    margin-bottom: 15px; /* Reduce space for smaller screens */
+  }
+}

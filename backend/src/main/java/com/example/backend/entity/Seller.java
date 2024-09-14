@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 
 
 import java.util.Set;
@@ -15,16 +16,25 @@ import java.util.Set;
  * Date : 7/30/2023 - 2:32 PM
  * Description :
  */
-@NoArgsConstructor
-@AllArgsConstructor
+
+@Entity(name = "Seller")
+@Table(name = "\"seller\"")
 @Data
+@Accessors(chain = true)
+@AllArgsConstructor
+@NoArgsConstructor
 @Builder
-@Entity
 public class Seller {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer sellerId;
+
     private String sellerName;
+
     private String sellerFirstName;
+
     private String sellerLastName;
+
     private String sellerPassword;
 
     @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)

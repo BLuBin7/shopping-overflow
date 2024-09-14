@@ -1,6 +1,12 @@
-import React, { useState } from 'react';
-import { BrowserRouter as Router,Outlet,Route,Routes,useNavigate } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React, { useState } from "react";
+import {
+  BrowserRouter as Router,
+  Outlet,
+  Route,
+  Routes,
+  useNavigate,
+} from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 import Signup from "./components/Signup";
 import Header from "./components/Header";
@@ -18,39 +24,55 @@ import ResetPassword from "./components/Signin/ResetPassword";
 import Profile from "./components/User/Profile";
 import ProductPopup from "./components/admin/PopupProduct";
 import ProductResponse from "./components/ProductResponse";
-import Category from './components/Category';
+import Category from "./components/Category";
+import CategoryDetails from "./components/Category/CategoryDetails";
 
 function App() {
   const searchKeyFromURL = new URLSearchParams(window.location.search).get(
     "searchKey"
   );
-  return (
-    <Router>
-      {/* <Header setSearchKey={setSearchKey} /> */}
-      <Header  />
-      <Routes>
-        {/* component trước sẽ là cha(sẽ đc vẫn giữ lại khi bị thay đổi) */}
-        <Route path="/" element={<Home />}>
-          {/* <Outlet /> */}
-        </Route>
-        <Route path="/category" element={<Category />} />
-        <Route path="/productresponse" element={<ProductResponse searchKey={searchKeyFromURL}  />} />
-        
-        <Route path="/allproducts" element={<AllProducts  searchKey={searchKeyFromURL}  />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/signin" element={<Signin />} />
-        <Route path="/admin-dashboard" element={<AdminDashboard />} />
-        <Route path="/addproduct" element={<Product />} />
-        <Route path="/products/:productId" element={<ProductDetails/>} />
-        {/* <Route path="/addtocart/:productId" element = {<AddToCart/>}></Route> */}
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/forgotpassword" element={<ForgotPassword />} />
-        <Route path="/resetpassword" element={<ResetPassword />} />
-        <Route path="/profile/:userName" element={< Profile/>} />
-        <Route path="/allproducts/searchproduct" element={<ProductPopup/>} />
 
-      </Routes>
-    </Router>
+  // Define the paths where you don't want to show the header
+
+  return (
+    <div>
+       
+      <Router>
+        {/* <Header setSearchKey={setSearchKey} /> */}
+        <Header />
+        <Routes>
+          {/* component trước sẽ là cha(sẽ đc vẫn giữ lại khi bị thay đổi) */}
+          <Route path="/" element={<Home />}>
+            {/* <Outlet /> */}
+          </Route>
+          <Route path="/category" element={<Category />} />
+          <Route
+            path="/productresponse"
+            element={<ProductResponse searchKey={searchKeyFromURL} />}
+          />
+
+          <Route
+            path="/allproducts"
+            element={<AllProducts searchKey={searchKeyFromURL} />}
+          />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/signin" element={<Signin />} />
+          <Route path="/admin-dashboard" element={<AdminDashboard />} />
+          <Route path="/addproduct" element={<Product />} />
+          <Route path="/products/:productId" element={<ProductDetails />} />
+          {/* <Route path="/addtocart/:productId" element = {<AddToCart/>}></Route> */}
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/forgotpassword" element={<ForgotPassword />} />
+          <Route path="/resetpassword" element={<ResetPassword />} />
+          <Route path="/profile/:userName" element={<Profile />} />
+          <Route path="/allproducts/searchproduct" element={<ProductPopup />} />
+          <Route
+            path="/getAllProductbasedonCategory/:categoryId"
+            element={<CategoryDetails />}
+          />
+        </Routes>
+      </Router>
+    </div>
   );
 }
 
