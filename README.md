@@ -1,3 +1,5 @@
+# E-commerce 
+
 ## Description
 Developed a comprehensive e-commerce platform enabling seamless online shopping experiences. Features include product management, order processing, user account management, and promotional offers
 
@@ -13,4 +15,6 @@ Developed a comprehensive e-commerce platform enabling seamless online shopping 
 
 ## Database Schema
 
-![Database Schema](https://blubin-ecommerce.s3.ap-southeast-1.amazonaws.com/E-commerce_diagram.svg)
+![Database Schema](frontend/public/image/E-commerce_diagram.svg)
+
+**Links**: ERD diagram shown in this project (a SVG file): [E-commerce Database Design](https://blubin-ecommerce.s3.ap-southeast-1.amazonaws.com/E-commerce_diagram.svg)
