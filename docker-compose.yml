@@ -4,10 +4,10 @@ x-default-logging: &logging
 #  options:
 #    max-size: "5m"
 #    max-file: "2"
-## x-loki-logging: &loki-logging
-##   driver: loki
-##   options:
-##     loki-url: 'http://loki:3100/api/prom/push'
+# x-loki-logging: &loki-logging
+#   driver: loki
+#   options:
+#     loki-url: 'http://loki:3100/api/prom/push'
   driver: loki
   options:
     max-size: "5m"
@@ -163,3 +163,5 @@ networks:
   monitoring_network:
     driver: bridge
     name: monitoring_network
+
+
