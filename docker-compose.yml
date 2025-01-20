@@ -1,0 +1,167 @@
+version: "3.9"
+x-default-logging: &logging
+#  driver: "json-file"
+#  options:
+#    max-size: "5m"
+#    max-file: "2"
+# x-loki-logging: &loki-logging
+#   driver: loki
+#   options:
+#     loki-url: 'http://loki:3100/api/prom/push'
+  driver: loki
+  options:
+    max-size: "5m"
+    max-file: "2"
+    loki-url: 'http://localhost:3100/api/prom/push'
+    loki-pipeline-stages: |
+      - multiline:
+          firstline: '^\d{4}-\d{2}-\d{2} \d{1,2}:\d{2}:\d{2}' 
+          max_wait_time: 3s
+      - regex:
+          expression: '^(?P<time>\d{4}-\d{2}-\d{2} \d{1,2}:\d{2}:\d{2},\d{3}) (?P<message>(?s:.*))$$'
+
+services:
+  backend:
+    image: blubin/knowledge-v1-backend:latest
+    container_name: backend
+    ports:
+      - "8000:8000"
+    depends_on:
+      - loki
+    environment:
+      APP_NAME: "backend"
+    logging: *logging
+    networks:
+      - monitoring_network
+
+  # ********************
+  # Telemetry Components
+  # ********************
+  # OpenTelemetry Collector
+  collector:
+    image: otel/opentelemetry-collector-contrib:0.105.0
+    container_name: collector
+    hostname: ${OTEL_COLLECTOR_HOST}
+    depends_on:
+      tempo:
+        condition: service_healthy
+      prometheus:
+        condition: service_healthy
+    deploy:
+      resources:
+        limits:
+          memory: 125M
+    restart: unless-stopped
+    command: [ "--config=/etc/otelcol-config.yml","--feature-gates=pkg.translator.prometheus.NormalizeName"]
+    volumes:
+      - ./docker/otel-collector/otelcol-config.yml:/etc/otelcol-config.yml
+      - collector_data:/var/lib/otelcol
+    ports:
+      - "5555:5555"     # OTLP over gRPC receiver
+      - "6666:6666"     # OTLP over HTTP receiver
+    logging: *logging
+    networks:
+      - monitoring_network
+
+  prometheus:
+    image: prom/prometheus:v2.42.0
+    hostname: ${PROMETHEUS_SERVICE_HOST}
+    container_name: prometheus
+    command:
+      - --web.console.templates=/etc/prometheus/consoles
+      - --web.console.libraries=/etc/prometheus/console_libraries
+      - --web.enable-remote-write-receiver
+      - --storage.tsdb.retention.time=1h
+      - --config.file=/etc/prometheus/prometheus.yml
+      - --storage.tsdb.path=/prometheus
+      - --web.enable-lifecycle
+      - --web.route-prefix=/
+      - --enable-feature=exemplar-storage
+    volumes:
+      - ./docker/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    ports:
+      - "${PROMETHEUS_SERVICE_PORT}:${PROMETHEUS_SERVICE_PORT}"
+    depends_on:
+      - backend
+    healthcheck:
+      interval: 5s
+      retries: 10
+      test: wget --no-verbose --tries=1 --spider http://localhost:9090/status || exit 1
+    logging: *logging
+    networks:
+      - monitoring_network
+
+  grafana:
+    image: grafana/grafana:10.4.2
+    container_name: grafana
+    extra_hosts: [ 'host.docker.internal:host-gateway' ]
+    volumes:
+      - ./docker/grafana/provisioning/datasources:/etc/grafana/provisioning/datasources:ro
+      - ./docker/grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards:ro
+#    environment:
+#      - GF_AUTH_ANONYMOUS_ENABLED=true
+#      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
+#      - GF_AUTH_DISABLE_LOGIN_FORM=true
+      - grafana_data:/var/lib/grafana
+    ports:
+      - "3000:3000"
+    healthcheck:
+      interval: 5s
+      retries: 10
+      test: wget --no-verbose --tries=1 --spider http://localhost:3000 || exit 1
+    logging: *logging
+    networks:
+      - monitoring_network
+
+  loki:
+    image: grafana/loki:3.1.0
+    container_name: loki
+    ports:
+      - "3100:3100"
+    command: -config.file=/etc/loki/local-config.yaml
+    volumes:
+      - loki_data:/loki
+    logging: *logging
+    networks:
+      - monitoring_network
+
+  tempo:
+    image: grafana/tempo:1.5.0
+    container_name: tempo
+    command: [ "-config.file=/etc/tempo.yaml", "-search.enabled=true"]
+    volumes:
+      - ./docker/tempo/tempo-local.yaml:/etc/tempo.yaml:ro
+      - ./tempo-data:/tmp/tempo
+    ports:
+      - "3200:3200"
+      # - "14268:14268"  # jaeger ingest
+      # - "9411:9411" # zipkin
+#      - "4317:4317" # otlp grpc ingest
+      #  - "4318:4318" # otlp http ingest
+    healthcheck:
+      interval: 5s
+      retries: 10
+      test: wget --no-verbose --tries=1 --spider http://localhost:3200/status || exit 1
+    logging: *logging
+    networks:
+      - monitoring_network
+
+
+volumes:
+  prometheus_data:
+    driver: local
+  grafana_data:
+    driver: local
+  tempo_data:
+    driver: local
+  loki_data:
+    driver: local
+  collector_data:
+    driver: local
+
+networks:
+  monitoring_network:
+    driver: bridge
+    name: monitoring_network
+
+
