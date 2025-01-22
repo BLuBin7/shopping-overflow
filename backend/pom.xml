@@ -7,7 +7,8 @@
 		<artifactId>spring-boot-starter-parent</artifactId>
 <!--		<version>3.1.1</version>-->
 		<version>2.5.2</version>
-		<relativePath>../pom.xml</relativePath>
+<!--		<relativePath>../pom.xml</relativePath>-->
+		<relativePath/>
 	</parent>
 	<groupId>com.example</groupId>
 	<artifactId>backend</artifactId>

@@ -29,3 +29,8 @@ hs_err_pid*
 .settings*
 .vscode
 *.iml
+
+#secrets key
+*.env
+*.key
+*.pem
