@@ -6,7 +6,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.3.5</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/>
     </parent>
     <groupId>com.shopping-overflow</groupId>
     <artifactId>shopping-overflow</artifactId>
@@ -35,7 +35,7 @@
 
         <springdoc-openapi-starter-webmvc-ui.version>2.0.2</springdoc-openapi-starter-webmvc-ui.version>
         <org.mapstruct.version>	1.6.2</org.mapstruct.version>
-        <org.lombok.version>1.18.34</org.lombok.version>
+        <org.lombok.version>1.18.36</org.lombok.version>
         <lombok-mapstruct-binding.version>0.2.0</lombok-mapstruct-binding.version>
         <logstash-logback-encoder.version>8.0</logstash-logback-encoder.version>
         <opentelemetry-logback.vesion>2.9.0-alpha</opentelemetry-logback.vesion>
@@ -206,6 +206,14 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-aspects</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-dependencies</artifactId>
+            <version>${spring-cloud.version}</version>
+            <scope>import</scope>
+            <type>pom</type>
         </dependency>
 
     </dependencies>

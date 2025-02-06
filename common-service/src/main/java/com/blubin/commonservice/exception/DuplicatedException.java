@@ -1,6 +1,6 @@
 package com.blubin.commonservice.exception;
 
-import com.yas.commonlibrary.utils.MessagesUtils;
+import com.blubin.commonservice.utils.MessagesUtils;
 
 public class DuplicatedException extends RuntimeException {
 

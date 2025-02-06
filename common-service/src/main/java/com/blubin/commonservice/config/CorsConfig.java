@@ -2,6 +2,7 @@ package com.blubin.commonservice.config;
 
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.cors.CorsConfiguration;
@@ -13,21 +14,22 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import java.util.List;
 
 @Configuration
+@ConfigurationProperties(prefix = "cors")
 public class CorsConfig {
 
     @Value("${cors.allowed-origins}")
     private List<String> allowedOrigins;
 
-    @Value("${cors.allowed-methods:*")
+    @Value("${cors.allowed-methods}")
     private List<String> allowedMethods;
 
-    @Value("${cors.allowed-headers:*")
+    @Value("${cors.allowed-headers}")
     private List<String> allowedHeaders;
 
-    @Value("${cors.allow-credentials:true}")
+    @Value("${cors.allow-credentials}")
     private boolean allowCredentials;
 
-    @Value("${cors.max-age:3600}")
+    @Value("${cors.max-age}")
     private long maxAge;
 
     @Bean
