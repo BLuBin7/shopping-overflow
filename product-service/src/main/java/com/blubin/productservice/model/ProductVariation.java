@@ -12,7 +12,7 @@ public class ProductVariation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "variation_id", nullable = false)
-    private Integer id;
+    private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_item_id")
@@ -23,6 +23,6 @@ public class ProductVariation {
     private SizeOption size;
 
     @Column(name = "qty_in_stock")
-    private Integer qtyInStock;
+    private Long qtyInStock;
 
 }

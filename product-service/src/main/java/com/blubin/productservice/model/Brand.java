@@ -14,7 +14,7 @@ public class Brand {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "brand_id", nullable = false)
-    private Integer id;
+    private Long id;
 
     @Size(max = 200)
     @NotNull

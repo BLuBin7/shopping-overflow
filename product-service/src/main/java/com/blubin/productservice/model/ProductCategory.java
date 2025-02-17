@@ -14,7 +14,7 @@ public class ProductCategory {
     @Id
 //    @ColumnDefault("nextval('product_category_product_category_id_seq')")
     @Column(name = "product_category_id", nullable = false)
-    private Integer id;
+    private Long id;
 
     @Size(max = 100)
     @NotNull

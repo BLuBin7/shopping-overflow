@@ -16,11 +16,11 @@ public class ProductAttributeId implements java.io.Serializable {
     private static final long serialVersionUID = -5905382189716996702L;
     @NotNull
     @Column(name = "product_id", nullable = false)
-    private Integer productId;
+    private Long productId;
 
     @NotNull
     @Column(name = "attribute_option_id", nullable = false)
-    private Integer attributeOptionId;
+    private Long attributeOptionId;
 
     @Override
     public boolean equals(Object o) {

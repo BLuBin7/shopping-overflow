@@ -26,11 +26,11 @@ public class BrandService {
         this.brandRepository = brandRepository;
     }
 
-    private boolean checkExistedName(String brandName, Integer id) {
+    private boolean checkExistedName(String brandName, Long id) {
         return brandRepository.findExistedName(brandName, id) != null;
     }
 
-    private void validExistedName(String brandName, Integer brandId) {
+    private void validExistedName(String brandName, Long brandId) {
         if(checkExistedName(brandName, brandId)) {
             throw new DuplicatedException(Constants.ErrorCodes.NAME_ALREADY_EXITED,brandName);
         }
@@ -62,7 +62,7 @@ public class BrandService {
         );
     }
 
-    public Brand update(BrandPostVm brandPostVm, Integer id) {
+    public Brand update(BrandPostVm brandPostVm, Long id) {
         validExistedName(brandPostVm.name(), id);
 
         Brand brand = brandRepository
@@ -74,7 +74,7 @@ public class BrandService {
         return brandRepository.save(brand);
     }
 
-    public void delete(Integer id) {
+    public void delete(Long id) {
         Brand brand = brandRepository.findById(id).orElseThrow(
                 () -> new NotFoundException(Constants.ErrorCodes.BRAND_NOT_FOUND, id));
 //        if (!brand.getProducts().isEmpty()) {
