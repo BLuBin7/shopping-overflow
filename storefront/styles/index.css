@@ -5,7 +5,7 @@
     box-sizing: border-box;
 }
 
-/* Header container */
+/* header container */
 .header {
     display: flex;
     align-items: center;
@@ -275,7 +275,7 @@
     overflow: hidden;
 }
 
-/* Header */
+/* header */
 .super-deal-header {
     display: flex;
     justify-content: space-between;

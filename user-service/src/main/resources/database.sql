@@ -126,7 +126,8 @@ CREATE TABLE product_image (
                                product_id BIGINT,
                                image_filename VARCHAR(400) NOT NULL,
                                product_item_id BIGINT,
-                               FOREIGN KEY (product_id) REFERENCES product(product_id)
+                               FOREIGN KEY (product_id) REFERENCES product(product_id),
+                               FOREIGN KEY (product_item_id) REFERENCES product_item(product_item_id)
 );
 -- Product Item Table
 CREATE TABLE product_item (

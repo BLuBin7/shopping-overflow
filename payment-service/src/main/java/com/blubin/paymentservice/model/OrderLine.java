@@ -1,5 +1,6 @@
 package com.blubin.paymentservice.model;
 
+import com.blubin.productservice.model.ProductItem;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

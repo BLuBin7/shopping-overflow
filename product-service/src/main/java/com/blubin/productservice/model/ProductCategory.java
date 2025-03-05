@@ -12,7 +12,7 @@ import lombok.Setter;
 @Table(name = "product_category")
 public class ProductCategory {
     @Id
-//    @ColumnDefault("nextval('product_category_product_category_id_seq')")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "product_category_id", nullable = false)
     private Long id;
 

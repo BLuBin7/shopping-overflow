@@ -1,5 +1,7 @@
 package com.blubin.ratingservice.model;
 
+import com.blubin.productservice.model.Product;
+import com.blubin.userservice.model.SiteUser;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;

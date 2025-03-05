@@ -55,9 +55,11 @@ CREATE TABLE address (
 -- Site User Table
 CREATE TABLE site_user (
                            id SERIAL PRIMARY KEY,
+                           user_name VARCHAR(255) NOT NULL,
                            email_address VARCHAR(255) UNIQUE NOT NULL,
                            phone_number VARCHAR(20),
-                           password VARCHAR(255) NOT NULL
+                           password VARCHAR(255) NOT NULL,
+                           role VARCHAR(50) NOT NULL DEFAULT 'USER'
 );
 -- User Address Table
 CREATE TABLE user_address (

@@ -43,7 +43,7 @@ const HeaderNav: React.FC = () => {
                                                                 'Shorts', 'Swimwear'
                                                             ].map(item => (
                                                                 <li key={item}>
-                                                                    <Link href={`/category/women/${item.toLowerCase().replace(/\s+/g, '-')}`}>
+                                                                    <Link href={`/app/category/women/${item.toLowerCase().replace(/\s+/g, '-')}`}>
                                                                         {item}
                                                                     </Link>
                                                                 </li>

@@ -1,5 +1,6 @@
 package com.blubin.cartservice.model;
 
+import com.blubin.userservice.model.SiteUser;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

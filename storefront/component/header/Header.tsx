@@ -4,8 +4,8 @@ import React, {useState} from 'react';
 import Link from 'next/link';
 
 import 'remixicon/fonts/remixicon.css';
-import HeaderNav from "@/app/component/Header/HeaderNav";
-import HeaderMain from "@/app/component/Header/HeaderMain";
+import HeaderNav from "@/component/header/HeaderNav";
+import HeaderMain from "@/component/header/HeaderMain";
 
 
 const Header: React.FC = () => {
@@ -17,7 +17,7 @@ const Header: React.FC = () => {
 
   return (
       <header>
-        {/* Top Header */}
+        {/* Top header */}
         <div className="header-top mobile-hide">
           <div className="container">
             <div className="wrapper flexitem">
@@ -29,8 +29,8 @@ const Header: React.FC = () => {
               </ul>
               <div className="right">
                 <ul className="flexitem main-links">
-                  <li><Link href="/signup">Sign Up</Link></li>
-                  <li><Link href="/signin">Sign In</Link></li>
+                  <li><Link href="/sign-up">Sign Up</Link></li>
+                  <li><Link href="/sign-in">Sign In</Link></li>
                   <li><Link href="/account">My Account</Link></li>
                   <li><Link href="/order-tracking">Order Tracking</Link></li>
 
@@ -85,7 +85,7 @@ const Header: React.FC = () => {
           </div>
         </div>
 
-        {/* Main Header */}
+        {/* Main header */}
         <div className="header">
           <div className="logo">
             <Link href="/public">SAFORU</Link>

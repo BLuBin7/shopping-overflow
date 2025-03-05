@@ -392,7 +392,7 @@ nav .fly-item,
     z-index: 1;
 }
 
-/* Header main , Category */
+/* header main , Category */
 .header-main{
     background-color: var(--secondary-dark-color);
     padding: 1.5em 0;
@@ -2743,18 +2743,18 @@ input[type = "range"]::-webkit-slider-thumb{
     } 
     */
    .dpt-menu .beauty ul{
-        background-image: url('../../public/assets/menu/menu_bg1.jpg');
+        background-image: url('../public/assets/menu/menu_bg1.jpg');
    }
 
    .dpt-menu .electronic ul{
-        background-image: url('../../public/assets/menu/menu_bg2.jpg');
+        background-image: url('../public/assets/menu/menu_bg2.jpg');
     } 
     .dpt-menu .fashion ul{
-        background-image: url('../../public/assets/menu/menu_bg3.jpg');
+        background-image: url('../public/assets/menu/menu_bg3.jpg');
     } 
 
     .dpt-menu .homekit .mega{
-        background-image: url('../../public/assets/menu/menu_bg4.jpg');
+        background-image: url('../public/assets/menu/menu_bg4.jpg');
    }
    .dpt-menu .has-child > :where(ul, .mega)::before{
         content: ' ';

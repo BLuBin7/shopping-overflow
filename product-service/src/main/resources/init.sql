@@ -5,11 +5,11 @@ VALUES
     (2, 'Adidas', 'A renowned sports brand specializing in athletic wear.');
 
 -- Insert dữ liệu vào bảng colour
-INSERT INTO colour (colour_id, colour_name)
+INSERT INTO colour (colour_id, colour_name, hex_code)
 VALUES
-    (1, 'Red'),
-    (2, 'Blue'),
-    (3, 'Black');
+    (1, 'Red', '123'),
+    (2, 'Blue','1234'),
+    (3, 'Black', '12345');
 
 -- Insert dữ liệu vào bảng product_category
 INSERT INTO product_category (product_category_id, category_name, category_image, category_description)
@@ -25,17 +25,17 @@ VALUES
     (1, 'Nike Air Max', 1, 'A comfortable and stylish running shoe.', 1, '10cm', 'Men', 'Hand wash only.', 'The Nike Air Max series offers unbeatable comfort.'),
     (2, 'Adidas Ultraboost', 2, 'High-performance running shoes for athletes.', 2, '12cm', 'Women', 'Machine wash cold.', 'Boost your energy with the Adidas Ultraboost.');
 
--- Insert dữ liệu vào bảng product_image
-INSERT INTO product_image (image_id, product_id, image_filename, product_item_id)
-VALUES
-    (1, 1, 'nike_air_max.jpg', 1),
-    (2, 2, 'adidas_ultraboost.jpg', 2);
-
 -- Insert dữ liệu vào bảng product_item
 INSERT INTO product_item (product_item_id, product_id, colour_id, original_price, sale_price, product_code)
 VALUES
     (1, 1, 1, 120.00, 100.00, 'AMX123'),
     (2, 2, 2, 150.00, 130.00, 'UB456');
+
+-- Insert dữ liệu vào bảng product_image
+INSERT INTO product_image (image_id, product_id, image_filename, product_item_id)
+VALUES
+    (1, 1, 'nike_air_max.jpg', 1),
+    (2, 2, 'adidas_ultraboost.jpg', 2);
 
 -- Insert dữ liệu vào bảng attribute_type
 INSERT INTO attribute_type (attribute_type_id, attribute_name)

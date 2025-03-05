@@ -1,5 +1,6 @@
 package com.blubin.paymentservice.model;
 
+import com.blubin.userservice.model.SiteUser;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;

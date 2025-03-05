@@ -8,7 +8,8 @@
         <version>3.3.5</version>
         <relativePath/>
     </parent>
-    <groupId>com.shopping-overflow</groupId>
+
+    <groupId>com.blubin</groupId>
     <artifactId>shopping-overflow</artifactId>
     <version>${revision}</version>
     <packaging>pom</packaging>
@@ -16,9 +17,11 @@
 
     <modules>
 <!--        <module>backend</module>-->
-        <module>product-service</module>
-        <module>cart-service</module>
+        <module>common-service</module>
         <module>identity-service</module>
+        <module>user-service</module>
+        <module>product-service</module>
+<!--        <module>cart-service</module>-->
         <module>media-service</module>
         <module>payment-service</module>
         <module>promotion-service</module>
@@ -30,11 +33,11 @@
         <java.version>21</java.version>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
-        <shopping-overflow.version>1.0-SNAPSHOT</shopping-overflow.version>
+<!--        <revision>3.4.1</revision>-->
         <revision>1.0-SNAPSHOT</revision>
 
         <springdoc-openapi-starter-webmvc-ui.version>2.0.2</springdoc-openapi-starter-webmvc-ui.version>
-        <org.mapstruct.version>	1.6.2</org.mapstruct.version>
+        <org.mapstruct.version>1.6.2</org.mapstruct.version>
         <org.lombok.version>1.18.36</org.lombok.version>
         <lombok-mapstruct-binding.version>0.2.0</lombok-mapstruct-binding.version>
         <logstash-logback-encoder.version>8.0</logstash-logback-encoder.version>
@@ -51,6 +54,9 @@
         <rest-assured.version>5.5.0</rest-assured.version>
         <instancio-junit.version>5.0.2</instancio-junit.version>
         <opencsv.version>5.9</opencsv.version>
+        <spring-cloud.version>2023.0.3</spring-cloud.version>
+        <jwt-version>0.9.1</jwt-version>
+        <jwt-ipml>0.11.5</jwt-ipml>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -134,6 +140,35 @@
                 <version>${testcontainers-keycloak.version}</version>
                 <scope>test</scope>
             </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+<!--            <dependency>-->
+<!--                <groupId>io.jsonwebtoken</groupId>-->
+<!--                <artifactId>jjwt</artifactId>-->
+<!--                <version>${jwt-version}</version>-->
+<!--            </dependency>-->
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt-impl</artifactId>
+                <version>${jwt-ipml}</version>
+                <scope>runtime</scope>
+            </dependency>
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt-jackson</artifactId>
+                <version>${jwt-ipml}</version>
+                <scope>runtime</scope>
+            </dependency>
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt-api</artifactId>
+                <version>${jwt-ipml}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
     <dependencies>
@@ -207,15 +242,32 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-aspects</artifactId>
         </dependency>
-
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-dependencies</artifactId>
-            <version>${spring-cloud.version}</version>
-            <scope>import</scope>
-            <type>pom</type>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-oauth2-client</artifactId>
         </dependency>
-
+<!--        <dependency>-->
+<!--            <groupId>io.jsonwebtoken</groupId>-->
+<!--            <artifactId>jjwt</artifactId>-->
+<!--        </dependency>-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-oauth2-authorization-server</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-impl</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-jackson</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-api</artifactId>
+        </dependency>
     </dependencies>
     <build>
         <pluginManagement>

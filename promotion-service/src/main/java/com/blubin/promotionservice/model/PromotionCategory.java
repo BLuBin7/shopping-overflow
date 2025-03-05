@@ -1,5 +1,6 @@
 package com.blubin.promotionservice.model;
 
+import com.blubin.productservice.model.ProductCategory;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

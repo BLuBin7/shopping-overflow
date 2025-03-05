@@ -1,8 +1,7 @@
-import Header from "@/app/component/Header/Header";
-import '../app/styles/index.css'
-import '../app/styles/style.css'
-import HeaderNav from "@/app/component/Header/HeaderNav";
-import Footer from "@/app/component/Footer/Footer";
+import Header from "@/component/header/Header";
+import '@/styles/index.css'
+import '@/styles/style.css'
+import Footer from "@/component/footer/Footer";
 
 export default function Home() {
   return (

@@ -1,0 +1,19 @@
+# Exclude build directories and compiled files
+build/
+*.jar
+
+# Exclude IDE configuration files
+.idea/
+.vscode/
+*.iml
+
+# Exclude environment and configuration files
+.env
+*.properties
+*.yml
+*.yaml
+
+# Exclude system and temporary files
+*.log
+*.tmp
+*.DS_Store

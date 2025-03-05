@@ -25,7 +25,8 @@ public class ProductImage {
     @Column(name = "image_filename", nullable = false, length = 400)
     private String imageFilename;
 
-    @Column(name = "product_item_id")
-    private Long productItemId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "product_item_id")
+    private ProductItem productItem;
 
 }
