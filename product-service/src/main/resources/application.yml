@@ -1,0 +1,25 @@
+server:
+  port: 8083
+
+spring:
+  application:
+    name: user_service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ecommerce
+    username: postgres
+    password: blubin
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+resilience4j.circuitbreaker:
+  instances:
+    countryServiceCircuitBreaker:
+      registerHealthIndicator: true
+      failureRateThreshold: 50 #
+      waitDurationInOpenState: 10000ms
+      permittedNumberOfCallsInHalfOpenState: 3
+      slidingWindowSize: 10
