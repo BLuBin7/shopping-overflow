@@ -57,7 +57,12 @@ jobs:
 
     # Autobuild attempts to build any compiled languages  (C/C++, C#, Go, or Java).
     # If this step fails, then you should remove it and run the build manually (see below)
-    - name: Build with Maven
+    - name: Autobuild for JavaScript
+      if: matrix.language == 'javascript'
+      uses: github/codeql-action/autobuild@v3
+
+    - name: Build Java project with Maven
+      if: matrix.language == 'java'
       run: mvn clean package
 
     # ℹ️ Command-line programs to run using the OS shell.
