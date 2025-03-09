@@ -1,6 +1,5 @@
-package com.blubin.userservice.repository;
+package com.blubin.identityservice.controller;
 
-import com.blubin.userservice.model.SiteUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

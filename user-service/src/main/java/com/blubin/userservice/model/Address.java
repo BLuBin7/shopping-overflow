@@ -7,15 +7,17 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
 
+import java.util.UUID;
+
 @Getter
 @Setter
 @Entity
 @Table(name = "address")
 public class Address {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "address_id",updatable = false , nullable = false)
+    private UUID id;
 
     @Size(max = 20)
     @Column(name = "unit_number", length = 20)
