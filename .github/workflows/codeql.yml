@@ -66,6 +66,13 @@ jobs:
     # If this step fails, then you should remove it and run the build manually (see below)
     - name: Build with Maven (only for Java)
       if: matrix.language =='java'
+      
+    - name: Autobuild for JavaScript
+      if: matrix.language == 'javascript'
+      uses: github/codeql-action/autobuild@v3
+
+    - name: Build Java project with Maven
+      if: matrix.language == 'java'
       run: mvn clean package
 
     # ℹ️ Command-line programs to run using the OS shell.
