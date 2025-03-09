@@ -1,9 +1,11 @@
 package com.blubin.cartservice.model;
 
-import com.blubin.userservice.model.SiteUser;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -11,12 +13,12 @@ import lombok.Setter;
 @Table(name = "shopping_cart")
 public class ShoppingCart {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "cart_id", nullable = false)
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "cart_id",updatable = false, nullable = false)
+    private UUID id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private SiteUser user;
+    @NotNull
+    @Column(name = "user_id")
+    private UUID user;
 
 }

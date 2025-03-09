@@ -1,6 +1,5 @@
 package com.blubin.paymentservice.model;
 
-import com.blubin.userservice.model.SiteUser;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
@@ -8,6 +7,7 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.Instant;
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -15,13 +15,12 @@ import java.time.Instant;
 @Table(name = "shop_order")
 public class ShopOrder {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "order_id", nullable = false)
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "order_id",updatable = false, nullable = false)
+    private UUID id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private SiteUser user;
+    @Column(name = "user_id")
+    private UUID user;
 
     @NotNull
     @Column(name = "order_date", nullable = false)

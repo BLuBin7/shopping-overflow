@@ -2,7 +2,9 @@ package com.blubin.productservice.viewmodel.productcategory;
 
 import com.blubin.productservice.model.ProductCategory;
 
-public record ProductCategoryPostVm(Long id, String categoryName, String categoryImage, String categoryDescription) {
+import java.util.UUID;
+
+public record ProductCategoryPostVm(UUID id, String categoryName, String categoryImage, String categoryDescription) {
     public ProductCategory toModel(){
         ProductCategory productCategory = new ProductCategory();
         productCategory.setId(id);

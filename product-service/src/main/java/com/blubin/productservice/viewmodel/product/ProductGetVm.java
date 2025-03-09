@@ -4,8 +4,10 @@ import com.blubin.productservice.model.Product;
 import com.blubin.productservice.viewmodel.brand.BrandGetVm;
 import com.blubin.productservice.viewmodel.productcategory.ProductCategoryGetVm;
 
+import java.util.UUID;
+
 public record ProductGetVm(
-        Long id,
+        UUID id,
         String productName,
         ProductCategoryGetVm productCategory,
         String productDescription,

@@ -6,15 +6,17 @@ import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.UUID;
+
 @Getter
 @Setter
 @Entity
 @Table(name = "product_category")
 public class ProductCategory {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "product_category_id", nullable = false)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "product_category_id",updatable = false, nullable = false)
+    private UUID id;
 
     @Size(max = 100)
     @NotNull
@@ -29,7 +31,7 @@ public class ProductCategory {
     private String categoryDescription;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "parent_product_category_id")
+    @JoinColumn(name = "parent_product_category_id", referencedColumnName = "product_category_id")
     private ProductCategory parentProductCategory;
 
 }

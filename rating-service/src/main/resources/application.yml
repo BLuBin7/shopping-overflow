@@ -1,6 +1,9 @@
+server:
+  port: 8087
+
 spring:
   application:
-    name: user_service
+    name: rating_service
   datasource:
     url: jdbc:postgresql://localhost:5432/ecommerce
     username: postgres

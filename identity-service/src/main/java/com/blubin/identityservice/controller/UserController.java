@@ -1,8 +1,8 @@
-package com.blubin.userservice.controller;
+package com.blubin.identityservice.controller;
 
-import com.blubin.userservice.model.SiteUser;
-import com.blubin.userservice.service.SiteUserService;
-import com.blubin.userservice.viewmodel.user.SiteUserRequestVM;
+import com.blubin.identityservice.model.SiteUser;
+import com.blubin.identityservice.service.SiteUserService;
+import com.blubin.identityservice.viewmodel.SiteUserRequestVM;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

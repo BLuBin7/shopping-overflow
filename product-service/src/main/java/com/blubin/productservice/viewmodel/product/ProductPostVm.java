@@ -4,6 +4,8 @@ import com.blubin.productservice.model.Brand;
 import com.blubin.productservice.model.Product;
 import com.blubin.productservice.model.ProductCategory;
 
+import java.util.UUID;
+
 public record ProductPostVm(
         String productName,
         String productDescription,
@@ -11,8 +13,8 @@ public record ProductPostVm(
         String modelWearing,
         String careInstructions,
         String about,
-        Long productCategoryId,
-        Long brandId
+        UUID productCategoryId,
+        UUID brandId
 ) {
     public Product toModel(ProductCategory productCategory, Brand brand) {
         Product product = new Product();

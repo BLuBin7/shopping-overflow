@@ -3,9 +3,11 @@ package com.blubin.productservice.viewmodel.attribute.attributeoption;
 import com.blubin.productservice.model.AttributeOption;
 import com.blubin.productservice.viewmodel.attribute.attributetype.AttributeTypeGetVm;
 
-public record AttributeOptionGetVm(Long id,
+import java.util.UUID;
+
+public record AttributeOptionGetVm(UUID id,
                                    AttributeTypeGetVm attributeTypeGetVm,
-                                    String attributeOptionName) {
+                                   String attributeOptionName) {
     public static AttributeOptionGetVm fromModel(AttributeOption attributeOption) {
         return new AttributeOptionGetVm(
                 attributeOption.getId(),

@@ -4,8 +4,10 @@ import com.blubin.productservice.model.ProductImage;
 import com.blubin.productservice.viewmodel.product.ProductGetVm;
 import com.blubin.productservice.viewmodel.productitem.ProductItemGetVm;
 
+import java.util.UUID;
+
 public record ProductImageGetVm(
-        Long productImageId,
+        UUID productImageId,
         ProductGetVm product,
         String imageFilename,
         ProductItemGetVm productItem) {

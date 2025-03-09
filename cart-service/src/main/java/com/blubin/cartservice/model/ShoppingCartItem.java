@@ -1,9 +1,12 @@
 package com.blubin.cartservice.model;
 
-import com.blubin.productservice.model.ProductItem;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -15,13 +18,9 @@ public class ShoppingCartItem {
 
     @MapsId("cartId")
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "cart_id", nullable = false)
     private ShoppingCart cart;
-
-    @MapsId("productItemId")
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "product_item_id", nullable = false)
-    private ProductItem productItem;
 
     @Column(name = "quantity")
     private Integer quantity;

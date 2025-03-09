@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class ColourService {
@@ -26,11 +27,11 @@ public class ColourService {
     }
 
 
-    private boolean checkExistedHexCode(String hexCode, Long id) {
+    private boolean checkExistedHexCode(String hexCode, UUID id) {
         return colourRepository.findExistedHexCode(hexCode, id) != null;
     }
 
-    private void validExistedName(String hexCode, Long ColourId) {
+    private void validExistedName(String hexCode, UUID ColourId) {
         if(checkExistedHexCode(hexCode, ColourId)) {
             throw new DuplicatedException(Constants.ErrorCodes.HEX_CODE_ALREADY_EXITED,hexCode);
         }
@@ -63,7 +64,7 @@ public class ColourService {
     }
 
 
-    public Colour update(ColourPostVm ColourPostVm, Long id) {
+    public Colour update(ColourPostVm ColourPostVm, UUID id) {
         validExistedName(ColourPostVm.hexCode(), id);
 
         Colour Colour = colourRepository

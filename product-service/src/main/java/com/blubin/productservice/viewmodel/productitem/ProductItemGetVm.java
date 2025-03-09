@@ -5,8 +5,9 @@ import com.blubin.productservice.viewmodel.colour.ColourGetVm;
 import com.blubin.productservice.viewmodel.product.ProductGetVm;
 
 import java.math.BigDecimal;
+import java.util.UUID;
 
-public record ProductItemGetVm(Long productId,
+public record ProductItemGetVm(UUID productId,
                                ProductGetVm productGetVm,
                                ColourGetVm colourGetVm,
                                BigDecimal originalPrice,

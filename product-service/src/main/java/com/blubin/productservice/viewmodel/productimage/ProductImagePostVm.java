@@ -4,10 +4,12 @@ import com.blubin.productservice.model.Product;
 import com.blubin.productservice.model.ProductImage;
 import com.blubin.productservice.model.ProductItem;
 
-public record ProductImagePostVm(Long productImageId,
-                                 Long productId,
+import java.util.UUID;
+
+public record ProductImagePostVm(UUID productImageId,
+                                 UUID productId,
                                  String imageFilename,
-                                 Long productItemId) {
+                                 UUID productItemId) {
     public ProductImage toModel(Product product, ProductItem productItem) {
         ProductImage productImage = new ProductImage();
         productImage.setId(productImageId);

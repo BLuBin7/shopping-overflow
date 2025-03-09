@@ -1,7 +1,5 @@
 package com.blubin.ratingservice.model;
 
-import com.blubin.productservice.model.Product;
-import com.blubin.userservice.model.SiteUser;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -9,6 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -16,17 +15,15 @@ import java.time.LocalDate;
 @Table(name = "product_review")
 public class ProductReview {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "review_id", nullable = false)
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "review_id",updatable = false, nullable = false)
+    private UUID id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_id")
-    private Product product;
+    @Column(name = "product_id")
+    private UUID product;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private SiteUser user;
+    @Column(name = "user_id")
+    private UUID user;
 
     @Size(max = 100)
     @Column(name = "review_title", length = 100)

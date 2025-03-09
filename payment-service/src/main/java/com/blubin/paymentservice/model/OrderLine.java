@@ -1,11 +1,11 @@
 package com.blubin.paymentservice.model;
 
-import com.blubin.productservice.model.ProductItem;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -13,17 +13,16 @@ import java.math.BigDecimal;
 @Table(name = "order_line")
 public class OrderLine {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "order_line_id", nullable = false)
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id" ,updatable = false , nullable = false)
+    private UUID id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id")
     private ShopOrder order;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "product_item_id")
-    private ProductItem productItem;
+    @Column(name = "product_item_id", nullable = false)
+    private UUID productItemId;
 
     @Column(name = "quantity")
     private Integer quantity;
