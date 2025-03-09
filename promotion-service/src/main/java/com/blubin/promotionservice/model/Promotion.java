@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.Instant;
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -15,9 +16,9 @@ import java.time.Instant;
 @Table(name = "promotion")
 public class Promotion {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "promotion_id",updatable = false, nullable = false)
+    private UUID id;
 
     @Size(max = 200)
     @NotNull

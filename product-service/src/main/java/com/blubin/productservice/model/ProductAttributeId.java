@@ -8,6 +8,7 @@ import lombok.Setter;
 import org.hibernate.Hibernate;
 
 import java.util.Objects;
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -16,11 +17,11 @@ public class ProductAttributeId implements java.io.Serializable {
     private static final long serialVersionUID = -5905382189716996702L;
     @NotNull
     @Column(name = "product_id", nullable = false)
-    private Long productId;
+    private UUID productId;
 
     @NotNull
-    @Column(name = "attribute_option_id", nullable = false)
-    private Long attributeOptionId;
+    @Column(name = "attribute_option_id",updatable = false, nullable = false)
+    private UUID attributeOptionId;
 
     @Override
     public boolean equals(Object o) {

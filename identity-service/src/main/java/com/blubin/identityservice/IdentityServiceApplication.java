@@ -6,8 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
 @SpringBootApplication(scanBasePackages = {"com.blubin.identityservice",
-											"com.blubin.commonservice",
-											"com.blubin.userservice"})
+											"com.blubin.commonservice"})
 @EnableConfigurationProperties(CorsConfig.class)
 public class IdentityServiceApplication {
 

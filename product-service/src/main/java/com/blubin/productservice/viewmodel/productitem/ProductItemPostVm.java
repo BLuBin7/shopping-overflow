@@ -5,10 +5,11 @@ import com.blubin.productservice.model.Product;
 import com.blubin.productservice.model.ProductItem;
 
 import java.math.BigDecimal;
+import java.util.UUID;
 
-public record ProductItemPostVm(Long id,
-                                Long productId,
-                                Long colourId,
+public record ProductItemPostVm(UUID id,
+                                UUID productId,
+                                UUID colourId,
                                 BigDecimal originalPrice,
                                 BigDecimal salePrice,
                                 String productCode) {

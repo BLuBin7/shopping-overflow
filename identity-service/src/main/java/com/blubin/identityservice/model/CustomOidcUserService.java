@@ -1,9 +1,7 @@
 package com.blubin.identityservice.model;
 
+import com.blubin.identityservice.repository.SiteUserRepository;
 import com.blubin.identityservice.utils.JwtUtils;
-import com.blubin.userservice.model.SiteUser;
-import com.blubin.userservice.model.UserRole;
-import com.blubin.userservice.repository.SiteUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.security.oauth2.client.oidc.userinfo.OidcUserRequest;
@@ -18,7 +16,6 @@ import org.springframework.stereotype.Service;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
-import java.util.UUID;
 
 @Service
 public class CustomOidcUserService extends OidcUserService {
@@ -27,6 +24,9 @@ public class CustomOidcUserService extends OidcUserService {
 
     @Autowired
     private JwtUtils jwtUtils;
+
+    private final String USER_SERVICE_URL = "http://localhost:8082/api/users";
+
 
     public CustomOidcUserService(JwtUtils jwtUtils) {
         this.jwtUtils = jwtUtils;
@@ -62,6 +62,7 @@ public class CustomOidcUserService extends OidcUserService {
         String email = oidcUser.getAttribute("email");
         String name = oidcUser.getAttribute("name");
 
+
         Optional<SiteUser> userOptional = siteUserRepository.findByEmailAddress(email);
         SiteUser siteUser;
 
@@ -82,40 +83,4 @@ public class CustomOidcUserService extends OidcUserService {
         claims.put("token", jwt);
         return new DefaultOidcUser(oidcUser.getAuthorities(), oidcUserAuthority.getIdToken(), new OidcUserInfo(claims));
     }
-
-//    private OidcUser processOidcUser(OidcUserRequest userRequest, OidcUser oidcUser) {
-//        OidcUserAuthority oidcUserAuthority = (OidcUserAuthority) oidcUser.getAuthorities()
-//                .stream()
-//                .filter(OidcUserAuthority.class::isInstance)
-//                .findFirst()
-//                .orElse(null);
-//
-//        String avatarUrl = null;
-//        if (oidcUserAuthority != null) {
-//            OidcUserInfo userInfo = oidcUserAuthority.getUserInfo();
-//            if (userInfo != null && userInfo.getClaims() != null) {
-//                avatarUrl = (String) userInfo.getClaims().get("picture");
-//            } else {
-//                avatarUrl = (String) oidcUserAuthority.getIdToken().getClaims().get("picture");
-//            }
-//        }
-//
-//        GoogleUserInfo googleUserInfo = new GoogleUserInfo(oidcUser.getAttributes());
-//
-//        String email = oidcUser.getEmail();
-//
-//        System.out.println(avatarUrl);
-//
-//        Optional<SiteUser> userOptional = siteUserRepository.findByEmailAddress(googleUserInfo.getEmail());
-//        if (!userOptional.isPresent()) {
-//            SiteUser user = new SiteUser();
-//            user.setEmailAddress(googleUserInfo.getEmail());
-//            user.setUserName(googleUserInfo.getName());
-//            user.setRole(UserRole.USER);
-//            user.setPassword("");
-//            siteUserRepository.save(user);
-//        }
-//
-//        return oidcUser;
-//    }
 }

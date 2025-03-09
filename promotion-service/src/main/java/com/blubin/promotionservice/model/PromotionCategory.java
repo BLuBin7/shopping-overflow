@@ -1,9 +1,12 @@
 package com.blubin.promotionservice.model;
 
-import com.blubin.productservice.model.ProductCategory;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -13,13 +16,10 @@ public class PromotionCategory {
     @EmbeddedId
     private PromotionCategoryId id;
 
-    @MapsId("categoryId")
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "category_id", nullable = false)
-    private ProductCategory category;
 
     @MapsId("promotionId")
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "promotion_id", nullable = false)
     private Promotion promotion;
 

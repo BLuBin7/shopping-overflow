@@ -19,6 +19,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.util.UUID;
+
 @RestController
 public class ColourController {
     private static final Logger log = LoggerFactory.getLogger(ColourController.class);
@@ -63,7 +65,7 @@ public class ColourController {
                     content = @Content(schema = @Schema(implementation = ErrorVm.class))),
             @ApiResponse(responseCode = "400", description = "Bad request",
                     content = @Content(schema = @Schema(implementation = ErrorVm.class)))})
-    public ResponseEntity<Void> updateColour(@PathVariable Long id, @Valid @RequestBody final ColourPostVm colourPostVm) {
+    public ResponseEntity<Void> updateColour(@PathVariable UUID id, @Valid @RequestBody final ColourPostVm colourPostVm) {
         colourService.update(colourPostVm, id);
         return ResponseEntity.noContent().build();
     }

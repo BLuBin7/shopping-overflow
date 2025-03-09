@@ -1,8 +1,8 @@
-package com.blubin.userservice.service;
+package com.blubin.identityservice.service;
 
-import com.blubin.userservice.model.SiteUser;
-import com.blubin.userservice.repository.SiteUserRepository;
-import com.blubin.userservice.viewmodel.user.SiteUserRequestVM;
+import com.blubin.identityservice.model.SiteUser;
+import com.blubin.identityservice.repository.SiteUserRepository;
+import com.blubin.identityservice.viewmodel.SiteUserRequestVM;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.security.crypto.password.PasswordEncoder;

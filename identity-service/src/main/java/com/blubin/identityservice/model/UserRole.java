@@ -1,4 +1,4 @@
-package com.blubin.userservice.model;
+package com.blubin.identityservice.model;
 
 public enum UserRole {
     ADMIN,

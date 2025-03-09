@@ -1,6 +1,6 @@
 package com.blubin.identityservice.utils;
 
-import com.blubin.userservice.model.SiteUser;
+import com.blubin.identityservice.model.SiteUser;
 import io.jsonwebtoken.security.Keys;
 import io.jsonwebtoken.*;
 import jakarta.annotation.PostConstruct;

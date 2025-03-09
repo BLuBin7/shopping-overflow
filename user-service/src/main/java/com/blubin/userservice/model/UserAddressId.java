@@ -8,6 +8,7 @@ import lombok.Setter;
 import org.hibernate.Hibernate;
 
 import java.util.Objects;
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -16,11 +17,11 @@ public class UserAddressId implements java.io.Serializable {
     private static final long serialVersionUID = -7363347071720835091L;
     @NotNull
     @Column(name = "user_id", nullable = false)
-    private Integer userId;
+    private UUID userId;
 
     @NotNull
     @Column(name = "address_id", nullable = false)
-    private Integer addressId;
+    private UUID addressId;
 
     @Override
     public boolean equals(Object o) {

@@ -2,12 +2,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.3.5</version>
-        <relativePath/>
-    </parent>
 
     <groupId>com.blubin</groupId>
     <artifactId>shopping-overflow</artifactId>
@@ -16,12 +10,11 @@
     <name>shopping-overflow</name>
 
     <modules>
-<!--        <module>backend</module>-->
         <module>common-service</module>
         <module>identity-service</module>
         <module>user-service</module>
         <module>product-service</module>
-<!--        <module>cart-service</module>-->
+        <module>cart-service</module>
         <module>media-service</module>
         <module>payment-service</module>
         <module>promotion-service</module>
@@ -33,7 +26,6 @@
         <java.version>21</java.version>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
-<!--        <revision>3.4.1</revision>-->
         <revision>1.0-SNAPSHOT</revision>
 
         <springdoc-openapi-starter-webmvc-ui.version>2.0.2</springdoc-openapi-starter-webmvc-ui.version>
@@ -60,6 +52,21 @@
     </properties>
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>3.3.5</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+<!--            tu them-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-parent</artifactId>
+                <version>3.3.5</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
             <dependency>
                 <groupId>net.logstash.logback</groupId>
                 <artifactId>logstash-logback-encoder</artifactId>
@@ -140,18 +147,6 @@
                 <version>${testcontainers-keycloak.version}</version>
                 <scope>test</scope>
             </dependency>
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>${spring-cloud.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-<!--            <dependency>-->
-<!--                <groupId>io.jsonwebtoken</groupId>-->
-<!--                <artifactId>jjwt</artifactId>-->
-<!--                <version>${jwt-version}</version>-->
-<!--            </dependency>-->
             <dependency>
                 <groupId>io.jsonwebtoken</groupId>
                 <artifactId>jjwt-impl</artifactId>
@@ -246,10 +241,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-oauth2-client</artifactId>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>io.jsonwebtoken</groupId>-->
-<!--            <artifactId>jjwt</artifactId>-->
-<!--        </dependency>-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-oauth2-authorization-server</artifactId>
@@ -289,7 +280,7 @@
                             <path>
                                 <groupId>org.projectlombok</groupId>
                                 <artifactId>lombok</artifactId>
-                                <version>${lombok.version}</version>
+                                <version>${org.lombok.version}</version>
                             </path>
                             <path>
                                 <groupId>org.projectlombok</groupId>
@@ -372,57 +363,11 @@
                 </plugin>
             </plugins>
         </pluginManagement>
-<!--        <plugins>-->
-<!--            <plugin>-->
-<!--                <groupId>org.codehaus.mojo</groupId>-->
-<!--                <artifactId>build-helper-maven-plugin</artifactId>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <id>add-test-source</id>-->
-<!--                        <phase>generate-test-sources</phase>-->
-<!--                        <goals>-->
-<!--                            <goal>add-test-source</goal>-->
-<!--                        </goals>-->
-<!--                        <configuration>-->
-<!--                            <sources>-->
-<!--                                <source>src/it/java</source>-->
-<!--                            </sources>-->
-<!--                        </configuration>-->
-<!--                    </execution>-->
-<!--                    <execution>-->
-<!--                        <id>add-integration-test-resources</id>-->
-<!--                        <phase>generate-test-resources</phase>-->
-<!--                        <goals>-->
-<!--                            <goal>add-test-resource</goal>-->
-<!--                        </goals>-->
-<!--                        <configuration>-->
-<!--                            <resources>-->
-<!--                                <resource>-->
-<!--                                    <filtering>true</filtering>-->
-<!--                                    <directory>src/it/resources</directory>-->
-<!--                                </resource>-->
-<!--                            </resources>-->
-<!--                        </configuration>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--            </plugin>-->
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-failsafe-plugin</artifactId>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <goals>-->
-<!--                            <goal>integration-test</goal>-->
-<!--                            <goal>verify</goal>-->
-<!--                        </goals>-->
-<!--                        <configuration>-->
-<!--                            <includes>-->
-<!--                                <include>**/**IT.java</include>-->
-<!--                            </includes>-->
-<!--                        </configuration>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--            </plugin>-->
-<!--        </plugins>-->
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
     </build>
 </project>

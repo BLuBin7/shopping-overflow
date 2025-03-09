@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @Transactional
@@ -26,11 +27,11 @@ public class BrandService {
         this.brandRepository = brandRepository;
     }
 
-    private boolean checkExistedName(String brandName, Long id) {
+    private boolean checkExistedName(String brandName, UUID id) {
         return brandRepository.findExistedName(brandName, id) != null;
     }
 
-    private void validExistedName(String brandName, Long brandId) {
+    private void validExistedName(String brandName, UUID brandId) {
         if(checkExistedName(brandName, brandId)) {
             throw new DuplicatedException(Constants.ErrorCodes.NAME_ALREADY_EXITED,brandName);
         }
@@ -62,7 +63,7 @@ public class BrandService {
         );
     }
 
-    public Brand update(BrandPostVm brandPostVm, Long id) {
+    public Brand update(BrandPostVm brandPostVm, UUID id) {
         validExistedName(brandPostVm.name(), id);
 
         Brand brand = brandRepository
@@ -74,7 +75,7 @@ public class BrandService {
         return brandRepository.save(brand);
     }
 
-    public void delete(Long id) {
+    public void delete(UUID id) {
         Brand brand = brandRepository.findById(id).orElseThrow(
                 () -> new NotFoundException(Constants.ErrorCodes.BRAND_NOT_FOUND, id));
 //        if (!brand.getProducts().isEmpty()) {

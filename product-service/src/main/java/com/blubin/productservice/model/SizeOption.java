@@ -6,15 +6,17 @@ import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.UUID;
+
 @Getter
 @Setter
 @Entity
 @Table(name = "size_option")
 public class SizeOption {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "size_id", nullable = false)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "size_id",updatable = false, nullable = false)
+    private UUID id;
 
     @Size(max = 100)
     @NotNull

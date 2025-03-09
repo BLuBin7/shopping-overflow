@@ -1,7 +1,7 @@
 package com.blubin.identityservice.config;
 
+import com.blubin.identityservice.model.SiteUser;
 import com.blubin.identityservice.utils.JwtUtils;
-import com.blubin.userservice.model.SiteUser;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

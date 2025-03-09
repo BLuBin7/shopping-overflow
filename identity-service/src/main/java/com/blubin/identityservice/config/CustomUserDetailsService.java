@@ -1,7 +1,7 @@
 package com.blubin.identityservice.config;
 
-import com.blubin.userservice.model.SiteUser;
-import com.blubin.userservice.repository.SiteUserRepository;
+import com.blubin.identityservice.model.SiteUser;
+import com.blubin.identityservice.repository.SiteUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

@@ -22,6 +22,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.util.UUID;
+
 @RestController
 public class BrandController {
     private static final Logger log = LoggerFactory.getLogger(BrandController.class);
@@ -66,7 +68,7 @@ public class BrandController {
                     content = @Content(schema = @Schema(implementation = ErrorVm.class))),
             @ApiResponse(responseCode = "400", description = "Bad request",
                     content = @Content(schema = @Schema(implementation = ErrorVm.class)))})
-    public ResponseEntity<Void> updateBrand(@PathVariable Long id, @Valid @RequestBody final BrandPostVm brandPostVm) {
+    public ResponseEntity<Void> updateBrand(@PathVariable UUID id, @Valid @RequestBody final BrandPostVm brandPostVm) {
         brandService.update(brandPostVm, id);
         return ResponseEntity.noContent().build();
     }
@@ -78,7 +80,7 @@ public class BrandController {
                     content = @Content(schema = @Schema(implementation = ErrorVm.class))),
             @ApiResponse(responseCode = "400", description = "Bad request",
                     content = @Content(schema = @Schema(implementation = ErrorVm.class)))})
-    public ResponseEntity<Void> deleteBrand(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteBrand(@PathVariable UUID id) {
         brandService.delete(id);
         return ResponseEntity.noContent().build();
     }

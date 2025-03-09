@@ -1,13 +1,14 @@
 package com.blubin.paymentservice.model;
 
-import com.blubin.userservice.model.SiteUser;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.ColumnDefault;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -15,13 +16,13 @@ import java.time.LocalDate;
 @Table(name = "user_payment_method")
 public class UserPaymentMethod {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id",updatable = false, nullable = false)
+    private UUID id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private SiteUser user;
+    @NotNull
+    @Column(name = "user_id")
+    private UUID user;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "payment_type_id")
