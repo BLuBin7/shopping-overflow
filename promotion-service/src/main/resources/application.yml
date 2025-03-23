@@ -1,5 +1,5 @@
 server:
-  port: 8084
+  port: 18084
 
 spring:
   application:
@@ -14,6 +14,23 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+  spring:
+    security:
+      oauth2:
+        resourceserver:
+          jwt:
+            issuer-uri: http://localhost:18081  # Địa chỉ máy chủ Identity (Keycloak, Auth0, hoặc service cấp JWT)
+            jwk-set-uri: http://localhost:18081/access-token-cookie  # Endpoint cung cấp public key để xác thực token
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+  endpoint:
+    health:
+      show-details: always
 
 resilience4j.circuitbreaker:
   instances:

@@ -88,7 +88,7 @@ public class SecurityConfig {
                         .jwt(jwt -> jwt.jwtAuthenticationConverter(jwtAuthenticationConverter()))
                 )
 
-                .logout((logout) -> logout
+                .logout(logout -> logout
                         .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                         .logoutSuccessUrl("/login?logout")
                         .permitAll()
@@ -101,7 +101,7 @@ public class SecurityConfig {
     }
 
     private GrantedAuthoritiesMapper userAuthoritiesMapper() {
-        return (authorities) -> {
+        return (authorities -> {
             Set<GrantedAuthority> mappedAuthorities = new HashSet<>();
 
             authorities.forEach(authority -> {
@@ -131,7 +131,7 @@ public class SecurityConfig {
             });
 
             return mappedAuthorities;
-        };
+        });
     }
 
     /**
@@ -152,9 +152,11 @@ public class SecurityConfig {
 
     @Bean
     public ClientRegistrationRepository clientRegistrationRepository() {
-        Dotenv dotenv = Dotenv.configure()
-                .directory("./")
-                .load();
+//        Dotenv dotenv = Dotenv.configure()
+//                .directory("./")
+//                .load();
+        Dotenv dotenv = Dotenv.configure().
+                directory(System.getProperty("user.dir")).load();
         return new InMemoryClientRegistrationRepository(
                 this.googleClientRegistration(
                         dotenv.get("GOOGLE_CLIENT_ID"),

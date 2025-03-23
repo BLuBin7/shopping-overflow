@@ -75,4 +75,13 @@ public class ColourService {
 
         return colourRepository.save(Colour);
     }
+
+    public void delete(UUID id) {
+        colourRepository.findById(id).orElseThrow(
+                () -> new NotFoundException(Constants.ErrorCodes.COLOUR_NOT_FOUND,id)
+        );
+        colourRepository.findById(id);
+    }
+
+
 }

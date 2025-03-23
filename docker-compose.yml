@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   postgres:
-    image: postgres:15
+    image: postgres:16-alpine
     container_name: postgres
     hostname: ${POSTGRES_HOST}
     restart: always
@@ -10,6 +10,9 @@ services:
       - POSTGRES_USER
       - POSTGRES_PASSWORD
       - POSTGRES_DB
+    volumes:
+      - ./docker/initdb:/docker-entrypoint-initdb.d
+      - postgres:/var/lib/postgresql/data
     ports:
       - "${POSTGRES_PORT}:${POSTGRES_PORT}"
     networks:
@@ -20,20 +23,49 @@ services:
     container_name: pyadmin
     hostname: pyadmin
     restart: always
+    ports:
+      - "8083:80"
     environment:
+      - GOOGLE_CLIENT_ID
+      - GOOGLE_CLIENT_SECRET
       - PGADMIN_DEFAULT_EMAIL
       - PGADMIN_DEFAULT_PASSWORD
+    depends_on:
+      - postgres
     volumes:
       - pgadmin:/var/lib/pgadmin
+    networks:
+      - spring-cloud-network
+
+  common-service:
+    build: ./common-service
+    container_name: common-service
+    restart: always
+    environment:
+      - SPRING_DATASOURCE_URL
     networks:
       - spring-cloud-network
 
   identity-service:
     build: ./identity-service
     container_name: identity-service
-    image: identity-service:latest
     ports:
-      - "8080:8080"
+      - "18081:8081"
+    restart: always
+    environment:
+      - SPRING_DATASOURCE_URL
+      - GOOGLE_CLIENT_ID
+      - GOOGLE_CLIENT_SECRET
+    depends_on:
+      - postgres
+    networks:
+      - spring-cloud-network
+
+  user-service:
+    build: ./user-service
+    container_name: user-service
+    ports:
+      - "18080:8080"
     restart: always
     environment:
       - SPRING_DATASOURCE_URL
@@ -42,12 +74,63 @@ services:
     networks:
       - spring-cloud-network
 
-  common-service:
-    build: ./common-service
-    container_name: common-service
-    image: common-service:latest
+  product-service:
+    build: ./product-service
+    container_name: product-service
     ports:
-      - "8081:8081"
+      - "18082:8082"
+    restart: always
+    environment:
+      - SPRING_DATASOURCE_URL
+    depends_on:
+      - postgres
+    networks:
+      - spring-cloud-network
+
+  promotion-service:
+    build: ./promotion-service
+    container_name: promotion-service
+    ports:
+      - "18084:8084"
+    restart: always
+    environment:
+      - SPRING_DATASOURCE_URL
+    depends_on:
+      - postgres
+    networks:
+      - spring-cloud-network
+
+  cart-service:
+    build: ./cart-service
+    container_name: cart-service
+    ports:
+      - "18085:8085"
+    restart: always
+    environment:
+      - SPRING_DATASOURCE_URL
+    depends_on:
+      - postgres
+    networks:
+      - spring-cloud-network
+
+  payment-service:
+    build: ./payment-service
+    container_name: payment-service
+    ports:
+      - "18086:8086"
+    restart: always
+    environment:
+      - SPRING_DATASOURCE_URL
+    depends_on:
+      - postgres
+    networks:
+      - spring-cloud-network
+
+  rating-service:
+    build: ./rating-service
+    container_name: rating-service
+    ports:
+      - "18087:8087"
     restart: always
     environment:
       - SPRING_DATASOURCE_URL

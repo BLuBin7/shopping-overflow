@@ -25,9 +25,6 @@ public class CustomOidcUserService extends OidcUserService {
     @Autowired
     private JwtUtils jwtUtils;
 
-    private final String USER_SERVICE_URL = "http://localhost:8082/api/users";
-
-
     public CustomOidcUserService(JwtUtils jwtUtils) {
         this.jwtUtils = jwtUtils;
     }
