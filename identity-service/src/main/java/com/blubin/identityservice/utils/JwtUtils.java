@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 @Component
 public class JwtUtils {
 
-    @Value("${jwt.secret:eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6IkphdmFJblVzZSIsImV4cCI6MTc0MDkzOTAzNCwiaWF0IjoxNzQwOTM5MDM0fQ.RaE-tYEFCkPbFo-VKgz4YPHOh9RvKpCN40SpxoiCzms\n}")
+    @Value("${jwt.secret}")
     private String jwtSecret;
 
     @Value("${jwt.expiration:3600000}")
@@ -47,6 +47,7 @@ public class JwtUtils {
 
         return Jwts.builder()
 //                .setSubject(userDetails.getUsername())
+                .setHeaderParam("typ", "JWT")
                 .setSubject(((SiteUser) userDetails).getEmailAddress())
                 .claim("roles", roles)
                 .claim("userId", ((SiteUser) userDetails).getId())

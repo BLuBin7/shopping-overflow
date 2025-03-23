@@ -8,7 +8,7 @@ build/
 *.iml
 
 # Exclude environment and configuration files
-.env
+#.env
 *.properties
 *.yml
 *.yaml

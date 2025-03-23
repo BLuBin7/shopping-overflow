@@ -1,11 +1,8 @@
 package com.blubin.productservice.controller;
 
-import com.blubin.commonservice.exception.BadRequestException;
-import com.blubin.commonservice.exception.NotFoundException;
 import com.blubin.productservice.model.Brand;
 import com.blubin.productservice.repository.BrandRepository;
 import com.blubin.productservice.service.BrandService;
-import com.blubin.productservice.utils.Constants;
 import com.blubin.productservice.utils.PageableConstant;
 import com.blubin.productservice.viewmodel.brand.BrandGetVm;
 import com.blubin.productservice.viewmodel.brand.BrandListGetVm;
