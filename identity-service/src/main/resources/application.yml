@@ -1,7 +1,5 @@
 server:
-  ssl:
-    enabled: false
-  port: 8080
+  port: 18081
 
 spring:
   application:
@@ -45,6 +43,8 @@ spring:
 #            token-uri: https://oauth2.googleapis.com/token
 #            user-info-uri: https://www.googleapis.com/oauth2/v3/userinfo
 #            user-name-attribute: sub
+jwt:
+  secret: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6IkphdmFJblVzZSIsImV4cCI6MTc0MDkzOTAzNCwiaWF0IjoxNzQwOTM5MDM0fQ.RaE-tYEFCkPbFo-VKgz4YPHOh9RvKpCN40SpxoiCzms
 
 cors:
   allowed-origins:
@@ -59,3 +59,13 @@ cors:
     - "Authorization"
   allow-credentials: true
   max-age: 3600
+
+
+resilience4j.circuitbreaker:
+  instances:
+    countryServiceCircuitBreaker:
+      registerHealthIndicator: true
+      failureRateThreshold: 50
+      waitDurationInOpenState: 10000ms
+      permittedNumberOfCallsInHalfOpenState: 3
+      slidingWindowSize: 10

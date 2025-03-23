@@ -69,4 +69,16 @@ public class ColourController {
         colourService.update(colourPostVm, id);
         return ResponseEntity.noContent().build();
     }
+
+    @DeleteMapping("/backoffice/colours{id}")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "204", description = "No content", content = @Content()),
+            @ApiResponse(responseCode = "404", description = "Not found",
+                    content = @Content(schema = @Schema(implementation = ErrorVm.class))),
+            @ApiResponse(responseCode = "400", description = "Bad request",
+                    content = @Content(schema = @Schema(implementation = ErrorVm.class)))})
+    public ResponseEntity<Void> deleteColour(@PathVariable UUID id) {
+        colourService.delete(id);
+        return ResponseEntity.noContent().build();
+    }
 }

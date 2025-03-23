@@ -46,7 +46,6 @@ public class OAuth2LoginSuccessHandler implements AuthenticationSuccessHandler {
         cookie.setAttribute("SameSite", "Lax");
         response.addCookie(cookie);
 
-
         response.sendRedirect("/users");
     }
 }
