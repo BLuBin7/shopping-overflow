@@ -22,6 +22,9 @@ spring:
             issuer-uri: http://localhost:18081  # Địa chỉ máy chủ Identity (Keycloak, Auth0, hoặc service cấp JWT)
             jwk-set-uri: http://localhost:18081/access-token-cookie  # Endpoint cung cấp public key để xác thực token
 
+jwt:
+  secret: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6IkphdmFJblVzZSIsImV4cCI6MTc0MDkzOTAzNCwiaWF0IjoxNzQwOTM5MDM0fQ.RaE-tYEFCkPbFo-VKgz4YPHOh9RvKpCN40SpxoiCzms
+
 
 management:
   endpoints:
