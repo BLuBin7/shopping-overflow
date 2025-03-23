@@ -44,15 +44,15 @@ public class SecurityConfig {
         return converter;
     }
 
-    @Bean
-    public UserDetailsService userDetailsService() {
-        return new InMemoryUserDetailsManager(
-                User.withUsername("admin")
-                        .password(passwordEncoder().encode("admin123"))
-                        .roles("ADMIN")
-                        .build()
-        );
-    }
+//    @Bean
+//    public UserDetailsService userDetailsService() {
+//        return new InMemoryUserDetailsManager(
+//                User.withUsername("admin")
+//                        .password(passwordEncoder().encode("admin123"))
+//                        .roles("ADMIN")
+//                        .build()
+//        );
+//    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
