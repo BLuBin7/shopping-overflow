@@ -22,13 +22,13 @@ jobs:
           echo "## 📄 Description" >> pr_body.txt
           echo "" >> pr_body.txt
           echo "This PR includes the following changes:" >> pr_body.txt
-          git log --format="- %s" -n 5 >> pr_body.txt
+          git log --format="- %s" --no-merges -n 5 >> pr_body.txt
           echo "" >> pr_body.txt
           
           echo "## 🌟 Pull Request Summary" >> pr_body.txt
           echo "**Related Issues:** ${{ github.event.pull_request.issue_url }}" >> pr_body.txt
           echo "**Commit Messages:**" >> pr_body.txt
-          git log --oneline -5 >> pr_body.txt
+          git log --oneline --no-merges -5 >> pr_body.txt
           echo "" >> pr_body.txt
 
           echo "## 🔄 Type of change" >> pr_body.txt
