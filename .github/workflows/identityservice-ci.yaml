@@ -28,6 +28,12 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Set up JDK 21
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+
       - name: Build Maven Project
         run: mvn clean install -pl identity-service -am
 
@@ -40,14 +46,6 @@ jobs:
         uses: jwgmeligmeyling/checkstyle-github-action@master
         with:
           path: "**/identity-service-checkstyle-result.xml"
-
-      - name: Unit Test Result
-        uses: dorny/test-reporter@v1
-        if: ${{ env.FROM_ORIGINAL_REPOSITORY == 'true' && (success() || failure()) }}
-        with:
-          name: Identity-Service-Unit-Test-Results
-          path: "identity-service/**/*-reports/TEST*.xml"
-          reporter: java-junit
 
       - name: Analyze with sonar cloud
         if: ${{ env.FROM_ORIGINAL_REPOSITORY == 'true' }}
