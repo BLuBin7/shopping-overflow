@@ -47,6 +47,7 @@ jobs:
         with:
           name: Identity-Service-Unit-Test-Results
           path: "identity-service/**/*-reports/TEST*.xml"
+          reporter: java-junit
 
       - name: Analyze with sonar cloud
         if: ${{ env.FROM_ORIGINAL_REPOSITORY == 'true' }}
