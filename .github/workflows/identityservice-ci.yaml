@@ -28,10 +28,10 @@ jobs:
         with:
           fetch-depth: 0
 
-      - uses: Build Maven Project
+      - name: Build Maven Project
         run: mvn clean install -pl identity-service -am
 
-      - uses: Run Maven Checkstyle
+      - name: Run Maven Checkstyle
         if: ${{ env.FROM_ORIGINAL_REPOSITORY == 'true' }}
         run: mvn checkstyle:checkstyle -pl identity-service -am -Dcheckstyle.output.file=identity-service-checkstyle-result.xml
 
