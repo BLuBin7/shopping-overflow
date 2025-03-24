@@ -1,0 +1,9 @@
+name: identity service ci
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "identity-service/**"
+      - ".github/workflows/identityservice-ci.yaml"
+      -
