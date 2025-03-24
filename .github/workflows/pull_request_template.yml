@@ -2,7 +2,7 @@ name: Auto-fill PR Template
 
 on:
   pull_request:
-    types: [opened, edited]
+    types: [opened, edited, synchronize]
 
 permissions:
   contents: write
