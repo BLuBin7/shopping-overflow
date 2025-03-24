@@ -10,6 +10,7 @@ permissions:
 
 jobs:
   autofill_pr:
+    if: github.actor != 'dependabot'
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
