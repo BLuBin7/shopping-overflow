@@ -116,4 +116,4 @@ jobs:
         with:
           context: ./identity-service
           push: true
-          tags: ghcr.io/blubin/identity-service:latest
+          tags: ghcr.io/blubin7/identity-service:latest
