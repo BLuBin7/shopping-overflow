@@ -63,7 +63,7 @@ jobs:
           project: 'shopping-overflow'
           path: '.'
           format: 'HTML'
-          failOnCVSS: 7
+        failOnCVSS: 7
 
       - name: Upload OWASP Dependency Check results
         if: ${{ env.FROM_ORIGINAL_REPOSITORY == 'true' }}
