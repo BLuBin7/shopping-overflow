@@ -70,9 +70,12 @@ jobs:
 
       - name: Analyze with sonar cloud
         if: ${{ env.FROM_ORIGINAL_REPOSITORY == 'true' }}
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_CLOUD_TOKEN }}
-        run: mvn org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -f identity-service
+        run: mvn org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
+          -f identity-service \
+          -Dsonar.organization=${{ secrets.SONAR_ORG }} \
+          -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }} \
+          -Dsonar.token=${{ secrets.SONAR_CLOUD_TOKEN }}
+
 
       - name: OWASP Dependency Check
         if: ${{ env.FROM_ORIGINAL_REPOSITORY == 'true' }}
