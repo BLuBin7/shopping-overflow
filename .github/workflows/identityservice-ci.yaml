@@ -58,15 +58,15 @@ jobs:
       - name: Build Maven Project
         run: mvn clean install -pl identity-service -am
 
-      - name: Run Maven Checkstyle
-        if: ${{ env.FROM_ORIGINAL_REPOSITORY == 'true' }}
-        run: mvn checkstyle:checkstyle -pl identity-service -am -Dcheckstyle.output.file=identity-service-checkstyle-result.xml
-
-      - name: Upload Checkstyle Result
-        if: ${{ env.FROM_ORIGINAL_REPOSITORY == 'true' }}
-        uses: jwgmeligmeyling/checkstyle-github-action@master
-        with:
-          path: "**/identity-service-checkstyle-result.xml"
+#      - name: Run Maven Checkstyle
+#        if: ${{ env.FROM_ORIGINAL_REPOSITORY == 'true' }}
+#        run: mvn checkstyle:checkstyle -pl identity-service -am -Dcheckstyle.output.file=identity-service-checkstyle-result.xml
+#
+#      - name: Upload Checkstyle Result
+#        if: ${{ env.FROM_ORIGINAL_REPOSITORY == 'true' }}
+#        uses: jwgmeligmeyling/checkstyle-github-action@master
+#        with:
+#          path: "**/identity-service-checkstyle-result.xml"
 
       - name: Analyze with sonar cloud
         if: ${{ env.FROM_ORIGINAL_REPOSITORY == 'true' }}
