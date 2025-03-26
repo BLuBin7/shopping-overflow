@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package com.blubin.proto;
+
+option java_multiple_files = true;
+option java_package = "com.blubin.proto";
+
+service TestService {
+  rpc testing(TestingRequest) returns (TestingResponse) {
+  }
+}
+
+message TestingRequest {
+  string message = 1;
+}
+
+message TestingResponse {
+  string message = 1;
+}
