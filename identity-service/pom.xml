@@ -18,22 +18,10 @@
 	</properties>
 
 	<dependencies>
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.boot</groupId>-->
-<!--			<artifactId>spring-boot-starter-data-jpa</artifactId>-->
-<!--		</dependency>-->
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
-<!--&lt;!&ndash;	api gateway&ndash;&gt;-->
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.boot</groupId>-->
-<!--			<artifactId>spring-boot-starter-webflux</artifactId>-->
-<!--		</dependency>-->
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
@@ -55,26 +43,15 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.boot</groupId>-->
-<!--			<artifactId>spring-boot-starter-security</artifactId>-->
-<!--		</dependency>-->
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.security</groupId>-->
-<!--			<artifactId>spring-security-test</artifactId>-->
-<!--			<scope>test</scope>-->
-<!--		</dependency>-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-oauth2-client</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>io.github.cdimascio</groupId>
 			<artifactId>dotenv-java</artifactId>
 			<version>3.0.0</version>
 		</dependency>
-
 		<dependency>
 			<groupId>jakarta.platform</groupId>
 			<artifactId>jakarta.jakartaee-api</artifactId>
@@ -85,36 +62,30 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>com.blubin</groupId>
 			<artifactId>common-service</artifactId>
 			<version>1.0-SNAPSHOT</version>
 			<scope>compile</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>com.blubin</groupId>
 			<artifactId>protobuf</artifactId>
 			<version>1.0-SNAPSHOT</version>
 			<scope>compile</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>net.devh</groupId>
 			<artifactId>grpc-spring-boot-starter</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>com.google.protobuf</groupId>
 			<artifactId>protobuf-java</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>io.grpc</groupId>
 			<artifactId>grpc-stub</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>io.grpc</groupId>
 			<artifactId>grpc-protobuf</artifactId>
@@ -148,6 +119,10 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>3.0.0-M9</version>
+			</plugin>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
 	</build>
