@@ -1,9 +1,9 @@
 syntax = "proto3";
 
-package com.blubin.proto;
+package com.blubin.proto.common;
 
 option java_multiple_files = true;
-option java_package = "com.blubin.proto";
+option java_package = "com.blubin.proto.common";
 
 service TestService {
   rpc testing(TestingRequest) returns (TestingResponse) {

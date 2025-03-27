@@ -1,6 +1,12 @@
 server:
   port: 18081
 
+grpc:
+  client:
+    user-service:
+      address: "static://localhost:19090"
+      negotiationType: plaintext
+
 spring:
   application:
     name: identity-service
@@ -14,6 +20,10 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+    properties:
+      hibernate:
+        jdbc:
+          time_zone=Asia/Ho_Chi_Minh:
 #  security:
 #    oauth2:
 #      client:

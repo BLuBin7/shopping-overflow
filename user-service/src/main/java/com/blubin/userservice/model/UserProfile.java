@@ -23,19 +23,19 @@ public class UserProfile {
 
     @Size(max = 100)
     @NotNull
-    @Column(name = "first_name", nullable = false, length = 100)
-    private String firstName;
+    @Column(name = "user_name", nullable = false, length = 100)
+    private String userName;
 
     @Size(max = 100)
     @NotNull
-    @Column(name = "last_name", nullable = false, length = 100)
-    private String lastName;
+    @Column(name = "email_address", nullable = false)
+    private String emailAddress;
 
     @Column(name = "date_of_birth")
     private LocalDate dateOfBirth;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "gender", length = 10, nullable = false)
+    @Column(name = "gender", length = 10)
     private Gender gender;
 
     @Column(name = "profile_avatars", length = Integer.MAX_VALUE)

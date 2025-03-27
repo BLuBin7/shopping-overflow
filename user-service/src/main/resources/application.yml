@@ -1,6 +1,10 @@
 server:
   port: 18080
 
+grpc:
+  server:
+    port: 19090
+
 spring:
   application:
     name: user_service
