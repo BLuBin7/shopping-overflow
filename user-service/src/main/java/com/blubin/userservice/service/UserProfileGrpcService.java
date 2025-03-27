@@ -3,7 +3,6 @@ package com.blubin.userservice.service;
 import com.blubin.proto.service.UserProfileRequest;
 import com.blubin.proto.service.UserProfileResponse;
 import com.blubin.proto.service.UserProfileServiceGrpc;
-import com.blubin.userservice.model.Gender;
 import com.blubin.userservice.model.UserProfile;
 import com.blubin.userservice.repository.UserProfileRepository;
 import io.grpc.stub.StreamObserver;
