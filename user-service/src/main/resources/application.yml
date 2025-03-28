@@ -4,10 +4,11 @@ server:
 grpc:
   server:
     port: 19090
+    address: 0.0.0.0
 
 spring:
   application:
-    name: user_service
+    name: user-service
   datasource:
     url: jdbc:postgresql://localhost:5432/ecommerce
     username: postgres

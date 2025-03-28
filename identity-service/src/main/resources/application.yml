@@ -4,7 +4,10 @@ server:
 grpc:
   client:
     user-service:
-      address: "static://localhost:19090"
+#      address: "static://localhost:19090"
+      address: "static://user-service:19090" # for docker
+#      address: "static://0.0.0.0:19090" # for docker
+#      address: dns:///user-service:19090
       negotiationType: plaintext
 
 spring:
