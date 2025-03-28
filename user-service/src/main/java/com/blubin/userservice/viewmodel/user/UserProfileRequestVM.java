@@ -7,7 +7,7 @@ import jakarta.validation.constraints.Size;
 
 @JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY)
 @JsonSerialize
-public record SiteUserRequestVM(
+public record UserProfileRequestVM(
         @NotBlank(message = "Email address must not be blank")
         @Size(max = 255, message = "Email address must not exceed 255 characters")
         String emailAddress,

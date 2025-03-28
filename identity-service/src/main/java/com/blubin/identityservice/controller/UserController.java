@@ -1,5 +1,4 @@
 package com.blubin.identityservice.controller;
-
 import com.blubin.identityservice.model.SiteUser;
 import com.blubin.identityservice.service.SiteUserService;
 import com.blubin.identityservice.viewmodel.SiteUserRequestVM;

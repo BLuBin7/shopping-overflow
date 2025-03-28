@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package com.blubin.proto.service;
+
+option java_multiple_files = true;
+option java_package = "com.blubin.proto.service";
+
+message UserProfileRequest {
+  string userName = 1;
+  string email = 2;
+  string profileAvatars = 3;
+  string userId = 4;
+}
+
+message UserProfileResponse {
+  string userName = 1;
+  string userId = 2;
+  string profileAvatars = 3;
+}
+
+service UserProfileService {
+  rpc CreateUserProfile (UserProfileRequest) returns (UserProfileResponse);
+}

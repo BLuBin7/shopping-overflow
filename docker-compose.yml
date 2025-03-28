@@ -46,6 +46,27 @@ services:
     networks:
       - spring-cloud-network
 
+  protobuf:
+    build: ./protobuf
+    container_name: protobuf
+    restart: always
+    networks:
+      - spring-cloud-network
+
+  user-service:
+    build: ./user-service
+    container_name: user-service
+    ports:
+      - "18080:8080" # HTTP
+      - "19090:19090" # gRPC
+    restart: always
+    environment:
+      - SPRING_DATASOURCE_URL
+    depends_on:
+      - postgres
+    networks:
+      - spring-cloud-network
+
   identity-service:
     build: ./identity-service
     container_name: identity-service
@@ -58,19 +79,7 @@ services:
       - GOOGLE_CLIENT_SECRET
     depends_on:
       - postgres
-    networks:
-      - spring-cloud-network
-
-  user-service:
-    build: ./user-service
-    container_name: user-service
-    ports:
-      - "18080:8080"
-    restart: always
-    environment:
-      - SPRING_DATASOURCE_URL
-    depends_on:
-      - postgres
+      - user-service
     networks:
       - spring-cloud-network
 
