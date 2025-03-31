@@ -46,18 +46,10 @@ services:
     networks:
       - spring-cloud-network
 
-  identity-service:
-    build: ./identity-service
-    container_name: identity-service
-    ports:
-      - "18081:8081"
+  protobuf:
+    build: ./protobuf
+    container_name: protobuf
     restart: always
-    environment:
-      - SPRING_DATASOURCE_URL
-      - GOOGLE_CLIENT_ID
-      - GOOGLE_CLIENT_SECRET
-    depends_on:
-      - postgres
     networks:
       - spring-cloud-network
 
@@ -65,7 +57,8 @@ services:
     build: ./user-service
     container_name: user-service
     ports:
-      - "18080:8080"
+      - "18080:18080" # HTTP
+      - "19090:19090" # gRPC
     restart: always
     environment:
       - SPRING_DATASOURCE_URL
@@ -74,11 +67,27 @@ services:
     networks:
       - spring-cloud-network
 
+  identity-service:
+    build: ./identity-service
+    container_name: identity-service
+    ports:
+      - "18081:18081"
+    restart: always
+    environment:
+      - SPRING_DATASOURCE_URL
+      - GOOGLE_CLIENT_ID
+      - GOOGLE_CLIENT_SECRET
+    depends_on:
+      - postgres
+      - user-service
+    networks:
+      - spring-cloud-network
+
   product-service:
     build: ./product-service
     container_name: product-service
     ports:
-      - "18082:8082"
+      - "18082:18082"
     restart: always
     environment:
       - SPRING_DATASOURCE_URL
@@ -91,7 +100,7 @@ services:
     build: ./promotion-service
     container_name: promotion-service
     ports:
-      - "18084:8084"
+      - "18084:18084"
     restart: always
     environment:
       - SPRING_DATASOURCE_URL
@@ -104,7 +113,7 @@ services:
     build: ./cart-service
     container_name: cart-service
     ports:
-      - "18085:8085"
+      - "18085:18085"
     restart: always
     environment:
       - SPRING_DATASOURCE_URL
@@ -117,7 +126,7 @@ services:
     build: ./payment-service
     container_name: payment-service
     ports:
-      - "18086:8086"
+      - "18086:18086"
     restart: always
     environment:
       - SPRING_DATASOURCE_URL
@@ -130,7 +139,7 @@ services:
     build: ./rating-service
     container_name: rating-service
     ports:
-      - "18087:8087"
+      - "18087:18087"
     restart: always
     environment:
       - SPRING_DATASOURCE_URL

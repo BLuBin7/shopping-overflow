@@ -11,6 +11,7 @@
 
     <modules>
         <module>common-service</module>
+        <module>protobuf</module>
         <module>identity-service</module>
         <module>user-service</module>
         <module>product-service</module>
@@ -45,6 +46,12 @@
         <spring-cloud.version>2023.0.3</spring-cloud.version>
         <jwt-version>0.9.1</jwt-version>
         <jwt-ipml>0.11.5</jwt-ipml>
+        <protobuf-java>3.24.1</protobuf-java>
+        <io.github.lognet>5.1.5</io.github.lognet>
+        <grpc-protobuf>1.70.0</grpc-protobuf>
+        <grpc-stub>1.54.0</grpc-stub>
+        <grpc-netty-shaded>1.54.0</grpc-netty-shaded>
+        <grpc-spring-boot-starter>2.15.0.RELEASE</grpc-spring-boot-starter>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -144,6 +151,36 @@
                 <groupId>io.jsonwebtoken</groupId>
                 <artifactId>jjwt-api</artifactId>
                 <version>${jwt-ipml}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.protobuf</groupId>
+                <artifactId>protobuf-java</artifactId>
+                <version>${protobuf-java}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.github.lognet</groupId>
+                <artifactId>grpc-spring-boot-starter</artifactId>
+                <version>${io.github.lognet}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.grpc</groupId>
+                <artifactId>grpc-protobuf</artifactId>
+                <version>${grpc-protobuf}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.grpc</groupId>
+                <artifactId>grpc-stub</artifactId>
+                <version>${grpc-stub}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.grpc</groupId>
+                <artifactId>grpc-netty-shaded</artifactId>
+                <version>${grpc-netty-shaded}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.devh</groupId>
+                <artifactId>grpc-spring-boot-starter</artifactId>
+                <version>${grpc-spring-boot-starter}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
