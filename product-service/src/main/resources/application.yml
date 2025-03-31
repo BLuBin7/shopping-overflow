@@ -22,6 +22,8 @@ spring:
 #      name: admin
 #      password: admin
 
+jwt:
+  secret: N2QwMmU5MGU1M2Q4MzYyNmQwYmEwOTI1YzMwNDRlMGZlZjY0ZTkxZDhjOWE2M2RjNGY2ZjMxNGQ2NjUxNzg0OQ==
 
 management:
   endpoints:

@@ -4,10 +4,8 @@ server:
 grpc:
   client:
     user-service:
-#      address: "static://localhost:19090"
-      address: "static://user-service:19090" # for docker
-#      address: "static://0.0.0.0:19090" # for docker
-#      address: dns:///user-service:19090
+      address: "static://localhost:19090"
+#      address: "static://user-service:19090" # for docker
       negotiationType: plaintext
 
 spring:
@@ -27,6 +25,8 @@ spring:
       hibernate:
         jdbc:
           time_zone=Asia/Ho_Chi_Minh:
+  jackson:
+      time-zone: Asia/Ho_Chi_Minh
 #  security:
 #    oauth2:
 #      client:
@@ -57,7 +57,7 @@ spring:
 #            user-info-uri: https://www.googleapis.com/oauth2/v3/userinfo
 #            user-name-attribute: sub
 jwt:
-  secret: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6IkphdmFJblVzZSIsImV4cCI6MTc0MDkzOTAzNCwiaWF0IjoxNzQwOTM5MDM0fQ.RaE-tYEFCkPbFo-VKgz4YPHOh9RvKpCN40SpxoiCzms
+  secret: N2QwMmU5MGU1M2Q4MzYyNmQwYmEwOTI1YzMwNDRlMGZlZjY0ZTkxZDhjOWE2M2RjNGY2ZjMxNGQ2NjUxNzg0OQ==
 
 cors:
   allowed-origins:

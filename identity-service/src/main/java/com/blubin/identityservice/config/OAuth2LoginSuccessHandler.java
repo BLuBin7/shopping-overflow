@@ -1,10 +1,10 @@
 package com.blubin.identityservice.config;
+
 import com.blubin.identityservice.model.SiteUser;
 import com.blubin.identityservice.repository.SiteUserRepository;
 import com.blubin.identityservice.service.GrpcUserService;
-import com.blubin.identityservice.service.SiteUserService;
+import com.blubin.identityservice.service.RefreshTokenService;
 import com.blubin.identityservice.utils.JwtUtils;
-import com.blubin.proto.service.UserProfileRequest;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -27,6 +27,9 @@ public class OAuth2LoginSuccessHandler implements AuthenticationSuccessHandler {
 
     @Autowired
     private SiteUserRepository siteUserRepository;
+
+    @Autowired
+    private RefreshTokenService refreshTokenService;
 
     public OAuth2LoginSuccessHandler(JwtUtils jwtUtils) {
         this.jwtUtils = jwtUtils;
@@ -51,8 +54,15 @@ public class OAuth2LoginSuccessHandler implements AuthenticationSuccessHandler {
                 });
 
         String token = jwtUtils.generateJwtToken(siteUser);
+        String refreshToken = refreshTokenService.createRefreshToken(siteUser.getId());
+        System.out.println(token);
+        System.out.println(refreshToken);
+//       Save JWT to Header
+        response.setHeader("Access-Control-Expose-Headers", "Authorization");
+        response.setHeader("Authorization", "Bearer " + token);
 
-        Cookie cookie = new Cookie("SERVER_SESSION", URLEncoder.encode(token, StandardCharsets.UTF_8));
+//       Save JWT to Cookie
+        Cookie cookie = new Cookie("SERVER_SESSION", URLEncoder.encode(refreshToken, StandardCharsets.UTF_8));
 //        XSS
         cookie.setHttpOnly(true);
 //        cookie.setSecure(true);

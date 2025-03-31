@@ -3,6 +3,7 @@ package com.blubin.identityservice.config;
 import com.blubin.identityservice.model.CustomOidcUserService;
 import com.blubin.identityservice.utils.Constants;
 import io.github.cdimascio.dotenv.Dotenv;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -31,8 +32,10 @@ import org.springframework.security.web.header.writers.XXssProtectionHeaderWrite
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
 import org.springframework.security.oauth2.server.resource.authentication.JwtGrantedAuthoritiesConverter;
+import org.springframework.web.cors.CorsConfiguration;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -45,12 +48,23 @@ public class SecurityConfig {
     @Autowired
     private OAuth2LoginSuccessHandler oAuth2LoginSuccessHandler;
 
+    @Autowired
+    private OAuth2LogoutSuccessHandler oAuth2LogoutSuccessHandler;
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity, CustomOidcUserService customOidcUserService) throws Exception {
         httpSecurity
                 .csrf(AbstractHttpConfigurer::disable)
-//                .cors(AbstractHttpConfigurer::disable)
-                .cors(Customizer.withDefaults())
+//                .cors(Customizer.withDefaults())
+                .cors(cors -> cors.configurationSource(request -> {
+                    CorsConfiguration config = new CorsConfiguration();
+                    config.setAllowedOrigins(List.of("http://localhost:3000"));
+                    config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE"));
+                    config.setAllowedHeaders(List.of("Authorization", "Content-Type"));
+                    config.setExposedHeaders(List.of("Authorization"));
+                    config.setAllowCredentials(true);
+                    return config;
+                }))
                 .headers(headers -> headers
                         .xssProtection(xss -> xss.headerValue(XXssProtectionHeaderWriter.HeaderValue.ENABLED_MODE_BLOCK))
                         .contentSecurityPolicy(cps -> cps.policyDirectives("default-src 'self';base-uri 'self';"
@@ -66,33 +80,26 @@ public class SecurityConfig {
                         .requestMatchers("/api/v1/**").hasAnyAuthority("ADMIN")
                         .anyRequest().authenticated()
                 )
-//                .formLogin((form) -> form
-//                        .defaultSuccessUrl("/swagger-ui/index.html", true)
-//                        .permitAll()
-//                )
-
                 .oauth2Login(oauth2 -> oauth2
-//                        .loginPage("/login")
                         .userInfoEndpoint(userInfo -> userInfo
                                 .oidcUserService(customOidcUserService)
                                 .userAuthoritiesMapper(this.userAuthoritiesMapper()))
                                 .successHandler(oAuth2LoginSuccessHandler)
 //                        .defaultSuccessUrl("/users", true)
-//                        .defaultSuccessUrl("/users")
                         .failureUrl("/login?error")
                 )
-//                .oauth2Login(Customizer.withDefaults())
-
                 // JWT-based resource server configuration
-                .oauth2ResourceServer(oauth2 -> oauth2
-                        .jwt(jwt -> jwt.jwtAuthenticationConverter(jwtAuthenticationConverter()))
-                )
+//                 .oauth2ResourceServer(oauth2 -> oauth2
+//                        .jwt(jwt -> jwt.jwtAuthenticationConverter(jwtAuthenticationConverter()))
+//                )
 
                 .logout(logout -> logout
                         .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                         .logoutSuccessUrl("/login?logout")
+                        .logoutSuccessHandler(oAuth2LogoutSuccessHandler)
                         .permitAll()
                 )
+
                 .httpBasic(Customizer.withDefaults());
 
         httpSecurity.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
@@ -123,10 +130,6 @@ public class SecurityConfig {
                     OAuth2UserAuthority oauth2UserAuthority = (OAuth2UserAuthority)authority;
 
                     Map<String, Object> userAttributes = oauth2UserAuthority.getAttributes();
-
-                    // Map the attributes found in userAttributes
-                    // to one or more GrantedAuthority's and add it to mappedAuthorities
-
                 }
             });
 
@@ -181,22 +184,6 @@ public class SecurityConfig {
                 .build();
     }
 
-//    @Bean
-//    public UserDetailsService userDetailsService(PasswordEncoder passwordEncoder) {
-//        UserDetails admin = User.builder()
-//                .username("admin")
-//                .password(passwordEncoder.encode("admin"))
-//                .authorities("ADMIN")
-//                .build();
-//
-//        UserDetails user = User.builder()
-//                .username("user")
-//                .password(passwordEncoder.encode("user"))
-//                .authorities("USER")
-//                .build();
-//
-//        return new InMemoryUserDetailsManager(admin, user);
-//    }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
