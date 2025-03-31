@@ -31,7 +31,7 @@ public class OAuth2LogoutSuccessHandler implements LogoutSuccessHandler {
         }
 
         Cookie refreshTokenCookie = new Cookie("SERVER_SESSION", null);
-        refreshTokenCookie.setHttpOnly(true);
+//        refreshTokenCookie.setHttpOnly(true);
         refreshTokenCookie.setPath("/");
         refreshTokenCookie.setMaxAge(0);
         response.addCookie(refreshTokenCookie);

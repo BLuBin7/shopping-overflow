@@ -44,7 +44,6 @@ public class OAuth2LoginSuccessHandler implements AuthenticationSuccessHandler {
         String email = oidcUser.getEmail();
         String name = oidcUser.getAttribute("name");
 
-
         SiteUser siteUser = siteUserRepository.findByEmailAddress(email)
                 .orElseGet(() -> {
                     SiteUser newUser = new SiteUser();
@@ -64,7 +63,7 @@ public class OAuth2LoginSuccessHandler implements AuthenticationSuccessHandler {
 //       Save JWT to Cookie
         Cookie cookie = new Cookie("SERVER_SESSION", URLEncoder.encode(refreshToken, StandardCharsets.UTF_8));
 //        XSS
-        cookie.setHttpOnly(true);
+//        cookie.setHttpOnly(true);
         cookie.setSecure(true);
         cookie.setPath("/");
         cookie.setMaxAge(7 * 24 * 60 * 60);
