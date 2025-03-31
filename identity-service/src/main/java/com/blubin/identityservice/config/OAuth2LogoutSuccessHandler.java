@@ -30,6 +30,12 @@ public class OAuth2LogoutSuccessHandler implements LogoutSuccessHandler {
             }
         }
 
+        Cookie refreshTokenCookie = new Cookie("SERVER_SESSION", null);
+        refreshTokenCookie.setHttpOnly(true);
+        refreshTokenCookie.setPath("/");
+        refreshTokenCookie.setMaxAge(0);
+        response.addCookie(refreshTokenCookie);
+
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
         response.getWriter().write("{\"message\": \"Logged out successfully\"}");
