@@ -2,8 +2,9 @@ name: GitHub API Cronjob
 
 on:
   schedule:
-    - cron: '*/5 * * * *'  # chạy mỗi phút
-  workflow_dispatch:     # cho phép chạy thủ công
+    - cron: '*/5 * * * *' 
+    - cron: '30 5,17 * * *'
+  workflow_dispatch:  
 
 jobs:
   call-api:
