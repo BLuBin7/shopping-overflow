@@ -13,7 +13,7 @@ public record ProductItemPostVm(UUID id,
                                 BigDecimal originalPrice,
                                 BigDecimal salePrice,
                                 String productCode) {
-    public ProductItem toModel( Product product, Colour colour){
+    public ProductItem toModel(Product product, Colour colour){
         ProductItem productItem = new ProductItem();
         productItem.setId(product.getId());
         productItem.setProduct(product);
