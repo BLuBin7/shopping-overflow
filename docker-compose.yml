@@ -55,6 +55,7 @@ services:
 
   user-service:
     build: ./user-service
+    image: ghcr.io/blubin7/user-service:latest
     container_name: user-service
     ports:
       - "18080:18080" # HTTP
@@ -64,11 +65,14 @@ services:
       - SPRING_DATASOURCE_URL
     depends_on:
       - postgres
+    volumes:
+      - ./deployment/app-config:/app-config
     networks:
       - spring-cloud-network
 
   identity-service:
     build: ./identity-service
+    image: ghcr.io/blubin7/identity-service:latest
     container_name: identity-service
     ports:
       - "18081:18081"
@@ -80,6 +84,8 @@ services:
     depends_on:
       - postgres
       - user-service
+    volumes:
+      - ./deployment/app-config:/app-config
     networks:
       - spring-cloud-network
 
@@ -93,6 +99,8 @@ services:
       - SPRING_DATASOURCE_URL
     depends_on:
       - postgres
+    volumes:
+      - ./deployment/app-config:/app-config
     networks:
       - spring-cloud-network
 
@@ -106,6 +114,8 @@ services:
       - SPRING_DATASOURCE_URL
     depends_on:
       - postgres
+    volumes:
+      - ./deployment/app-config:/app-config
     networks:
       - spring-cloud-network
 
@@ -119,6 +129,8 @@ services:
       - SPRING_DATASOURCE_URL
     depends_on:
       - postgres
+    volumes:
+      - ./deployment/app-config:/app-config
     networks:
       - spring-cloud-network
 
@@ -132,6 +144,8 @@ services:
       - SPRING_DATASOURCE_URL
     depends_on:
       - postgres
+    volumes:
+      - ./deployment/app-config:/app-config
     networks:
       - spring-cloud-network
 
@@ -145,6 +159,8 @@ services:
       - SPRING_DATASOURCE_URL
     depends_on:
       - postgres
+    volumes:
+      - ./deployment/app-config:/app-config
     networks:
       - spring-cloud-network
 
