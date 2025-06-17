@@ -4,7 +4,10 @@ import com.blubin.productservice.model.ProductCategory;
 
 import java.util.UUID;
 
-public record ProductCategoryPostVm(UUID id, String categoryName, String categoryImage, String categoryDescription) {
+public record ProductCategoryPostVm(UUID id,
+                                    String categoryName,
+                                    String categoryImage,
+                                    String categoryDescription) {
     public ProductCategory toModel(){
         ProductCategory productCategory = new ProductCategory();
         productCategory.setId(id);
