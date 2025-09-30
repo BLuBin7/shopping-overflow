@@ -50,7 +50,7 @@
         <io.github.lognet>5.1.5</io.github.lognet>
         <grpc-protobuf>1.70.0</grpc-protobuf>
         <grpc-stub>1.54.0</grpc-stub>
-        <grpc-netty-shaded>1.54.0</grpc-netty-shaded>
+        <grpc-netty-shaded>1.75.0</grpc-netty-shaded>
         <grpc-spring-boot-starter>2.15.0.RELEASE</grpc-spring-boot-starter>
     </properties>
     <dependencyManagement>
